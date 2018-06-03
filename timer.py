@@ -9,15 +9,15 @@ def get_homepage():
    
 @app.route('/login', methods=['POST'])
 def login(): 
+    sport = request.form['sport']
     team = request.form['team']
     username = request.form['username']
-    return redirect("/" + team + "/" + username) 
+    return redirect("/" + sport + "/" + team + "/" + username) 
 # Pass two arguments through redirect without having to make an extra page 
 
-@app.route('/<team>/<username>')
-def get_user_page(team, username):
-    return render_template('timer_page.html', username = username, team = team)
-
+@app.route('/<sport>/<team>/<username>')
+def get_user_page(sport, team, username):
+    return render_template('timer_page.html', username = username, team = team, sport = sport)
 
 
 if __name__ == '__main__':
