@@ -8,10 +8,11 @@
      <script type="text/javascript" src="https://code.jquery.com/jquery.min.js"></script>
      <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/hover.css/2.1.1/css/hover-min.css" type="text/css" />
-    <link rel="stylesheet" href="/static/style.css" type="text/css" />
+    <link rel="stylesheet" href="{{ url_for ('static', filename = 'style.css')}}" type="text/css" />
     <title>Sports Multi-Timer Assistant</title>
 </head>
 <body>
-    
+    <h2>Timing Assistant</h2>
+    <h4>Welcome to {{team}}'s Timing Assistant. You are logged in as {{username}}.</h4>
 </body>
 </html>
