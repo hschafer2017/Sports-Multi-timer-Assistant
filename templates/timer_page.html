@@ -14,22 +14,38 @@
 </head>
 
 <body>
-    <h2>Timing Assistant</h2>
-    <h4>Welcome to {{team}}'s Timing Assistant. You are logged in as {{username}}.</h4>
-    <h3>You are timing for {{sport}}.</h3>
-    <h5>Please choose your event:</h5>
-    <div class="row">
-    <form action= "/{{sport}}/{{team}}/{{username}}/{{meet}}/new" method = "POST">
-        <p>Event: </p>
-        <select name="Event">
+    <div class="container">
+        <div class="row">
+            <h2>Timing Assistant</h2>
+        </div>
+        <div class="row">
+            <div class="col-xs-12 col-sm-12">
+                <h4>Welcome to {{team}}'s Timing Assistant. You are logged in as {{username}}.</h4>
+                <h4>You are timing for {{sport}}.</h4>
+            </div>
+        </div>
+        <br>
+        <div class="row">
+            <div class="col-xs-12 col-sm-12">
+                <div class="center">
+                    <h5>Please choose your event:</h5>
+                </div>
+                <br>
+                <div class="row">
+                    <form action="/{{sport}}/{{team}}/{{username}}/{{meet}}/new" method="POST">
+                        <div class="col-xs-4 col-sm-4">
+                            <p>Event: </p>
+                            <select name="Event">
             <option value="50 Freestyle">50 Freestyle</option>
             <option value="500 Freestyle">500 Freestyle</option>
             <option value="100 Butterfly">100 Butterfly</option>
             <option value="100 Backstroke">100 Backstroke</option>
             <option value="200 Freestyle">200 Freestyle</option>
         </select>
-        <p>Heat: </p>
-        <select name="Heat">
+                        </div>
+                        <div class="col-xs-4 col-sm-4">
+                            <p>Heat: </p>
+                            <select name="Heat">
             <option value="1">1</option>
             <option value="1">2</option>
             <option value="1">3</option>
@@ -38,8 +54,10 @@
             <option value="1">6</option>
             <option value="1">7</option>
         </select>
-        <p>Number of Lanes: </p>
-        <select name="Lanes">
+                        </div>
+                        <div class="col-xs-4 col-sm-4">
+                            <p>Number of Lanes: </p>
+                            <select name="Lanes">
             <option value="1">1</option>
             <option value="1">2</option>
             <option value="1">3</option>
@@ -49,23 +67,36 @@
             <option value="1">7</option>
             <option value="1">8</option>
         </select>
-        <input type="submit" value="Submit" />
-    </form>
-    </div>
-    <h3>Event: {{event}}</h3>
-    <h3>Heat: {{heat}}</h3>
-    <h3>Lanes: {{lane_count}}</h3>
-    <div class="container">
-        <div class="row">
-            <h3>00:00:00</h3>
-            <div class="row">
-                <form>
-                    <input type="submit" name="Start" value="Start" class="btn btn-success" />
-                    <input type="submit" name="Stop" value="Stop" class="btn btn-danger" />
-                </form>
+                            <input type="submit" value="Submit" />
+                        </div>
+                    </form>
+                </div>
+                <div class="row">
+                    <div class="col-xs-4 col-sm-4">
+                        <h4>Event: {{event}}</h3>
+                    </div>
+                    <div class="col-xs-4 col-sm-4">
+                        <h4>Heat: {{heat}}</h3>
+                    </div>
+                    <div class="col-xs-4 col-sm-4">
+                        <h4>Lanes: {{lane_count}}</h3>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
+    <br>
+    <div class="timer">
+        <form onsubmit= 'return false'>
+            <h3><time>00:00:00</time></h3>
+            <input type="submit" name="Start" value="Start" id='start' class="btn btn-success" />
+            <input type="submit" name="Stop" value="Stop" id='stop' class="btn btn-danger" />
+            <input type="submit" name="Reset" value="Reset" id='reset' class="btn btn-info" />
+        </form>
+    </div>
+    </div>
+    <script src="{{url_for('static', filename='stopwatch.js')}}"></script>
+
 </body>
 
 </html>
