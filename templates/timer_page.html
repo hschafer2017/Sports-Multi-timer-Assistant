@@ -19,14 +19,14 @@
     <h3>You are timing for {{sport}}.</h3>
     <h5>Please choose your event:</h5>
     <div class="row">
-    <form action= "#" method = "POST">
+    <form action= "/{{sport}}/{{team}}/{{username}}/{{meet}}/new" method = "POST">
         <p>Event: </p>
         <select name="Event">
-            <option value="50Fr">50 Freestyle</option>
-            <option value="500Fr">500 Freestyle</option>
-            <option value="100Bf">100 Butterfly</option>
-            <option value="100Bk">100 Backstroke</option>
-            <option value="200Fr">200 Freestyle</option>
+            <option value="50 Freestyle">50 Freestyle</option>
+            <option value="500 Freestyle">500 Freestyle</option>
+            <option value="100 Butterfly">100 Butterfly</option>
+            <option value="100 Backstroke">100 Backstroke</option>
+            <option value="200 Freestyle">200 Freestyle</option>
         </select>
         <p>Heat: </p>
         <select name="Heat">
@@ -52,22 +52,20 @@
         <input type="submit" value="Submit" />
     </form>
     </div>
+    <h3>Event: {{event}}</h3>
+    <h3>Heat: {{heat}}</h3>
+    <h3>Lanes: {{lane_count}}</h3>
     <div class="container">
         <div class="row">
-            <h3>BIG TIMER GOES HERE</h3>
+            <h3>00:00:00</h3>
             <div class="row">
                 <form>
                     <input type="submit" name="Start" value="Start" class="btn btn-success" />
                     <input type="submit" name="Stop" value="Stop" class="btn btn-danger" />
                 </form>
             </div>
-            <h3>{{lane_count}}</h3>
         </div>
     </div>
-
-
-
-
 </body>
 
 </html>
