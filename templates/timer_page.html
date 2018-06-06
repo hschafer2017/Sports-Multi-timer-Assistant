@@ -10,6 +10,7 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/hover.css/2.1.1/css/hover-min.css" type="text/css" />
     <link rel="stylesheet" href="{{ url_for ('static', filename = 'style.css')}}" type="text/css" />
+
     <title>Sports Multi-Timer Assistant</title>
 </head>
 
@@ -87,13 +88,13 @@
     </div>
     <br>
     <div class="timer">
-        <form onsubmit= 'return false'>
-            <h3><time>00:00:00</time></h3>
-            <input type="submit" name="Start" value="Start" id='start' class="btn btn-success" />
-            <input type="submit" name="Stop" value="Stop" id='stop' class="btn btn-danger" />
-            <input type="submit" name="Reset" value="Reset" id='reset' class="btn btn-info" />
+        <form action="/time" method='POST' id='timer_form'>
+            <h3><time id='the_time'>00:00:00</time></h3>
+            <button type="submit" value="Submit" class="btn btn-primary">Save Times</button>
         </form>
-    </div>
+        <input type="submit" name="Start" value="Start" id='start' class="btn btn-success" />
+        <input type="submit" name="Stop" value="Stop" id='stop' class="btn btn-danger" />
+        <input type="submit" name="Reset" value="Reset" id='reset' class="btn btn-info" />
     </div>
     <script src="{{url_for('static', filename='stopwatch.js')}}"></script>
 

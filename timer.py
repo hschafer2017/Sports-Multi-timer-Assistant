@@ -31,5 +31,10 @@ def timer_setup(sport, team, username, meet):
 def timer_set(sport, team, username, meet, event, heat, lane_count):
     return render_template('timer_page.html', username = username, team = team, sport = sport, meet = meet, event = event, heat = heat, lane_count = lane_count)
 
+@app.route('/time', methods = ['POST'])
+def time():
+    time = request.form['time']
+    return time
+
 if __name__ == '__main__':
     app.run(host=os.getenv('IP'), port=int(os.getenv('PORT')), debug = True)
