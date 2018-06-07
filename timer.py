@@ -25,10 +25,12 @@ def timer_setup(sport, team, username, meet):
     event = request.form['Event']
     heat = request.form['Heat']
     lane_count = request.form['Lanes']
+    lanes = int(lane_count)
     return redirect("/" + sport + "/" + team + "/" + username + "/" + meet + '/' + event + "/" + heat + "/" + lane_count)
 
 @app.route('/<sport>/<team>/<username>/<meet>/<event>/<heat>/<lane_count>')
 def timer_set(sport, team, username, meet, event, heat, lane_count):
+    lanes = int(lane_count)
     return render_template('timer_page.html', username = username, team = team, sport = sport, meet = meet, event = event, heat = heat, lane_count = lane_count)
 
 @app.route('/time', methods = ['POST'])

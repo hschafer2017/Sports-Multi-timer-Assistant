@@ -20,3 +20,7 @@ h5 {
 .center {
     text-align: center;
 }
+
+.save {
+    display: none;
+}

@@ -47,26 +47,26 @@
                         <div class="col-xs-4 col-sm-4">
                             <p>Heat: </p>
                             <select name="Heat">
-            <option value="1">1</option>
-            <option value="1">2</option>
-            <option value="1">3</option>
-            <option value="1">4</option>
-            <option value="1">5</option>
-            <option value="1">6</option>
-            <option value="1">7</option>
+            <option value='1'>1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
         </select>
                         </div>
                         <div class="col-xs-4 col-sm-4">
                             <p>Number of Lanes: </p>
                             <select name="Lanes">
             <option value="1">1</option>
-            <option value="1">2</option>
-            <option value="1">3</option>
-            <option value="1">4</option>
-            <option value="1">5</option>
-            <option value="1">6</option>
-            <option value="1">7</option>
-            <option value="1">8</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+            <option value="8">8</option>
         </select>
                             <input type="submit" value="Submit" />
                         </div>
@@ -74,7 +74,7 @@
                 </div>
                 <div class="row">
                     <div class="col-xs-4 col-sm-4">
-                        <h4>Event: {{event}}</h3>
+                        <h4>{{event}}</h3>
                     </div>
                     <div class="col-xs-4 col-sm-4">
                         <h4>Heat: {{heat}}</h3>
@@ -89,12 +89,41 @@
     <br>
     <div class="timer">
         <form action="/time" method='POST' id='timer_form'>
-            <h3><time id='the_time'>00:00:00</time></h3>
+            <h1><time id='timerLabel3'>00:00:00</time></h1>
             <button type="submit" value="Submit" class="btn btn-primary">Save Times</button>
         </form>
-        <input type="submit" name="Start" value="Start" id='start' class="btn btn-success" />
-        <input type="submit" name="Stop" value="Stop" id='stop' class="btn btn-danger" />
-        <input type="submit" name="Reset" value="Reset" id='reset' class="btn btn-info" />
+        <br>
+        <input type="button" onclick="moveAll(this)" value="START" id="moveAllBtn" class="btn btn-success" />
+        <button onclick="resetAll(this)" value='resetMain' id="resetMain" class="btn btn-info">RESET</button>
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-6 col-sm-6">
+                    <br>
+                    <h3 id='timerLabel1'>00:00:00</h4>
+                        <h4>
+                            <div id="splits1">
+                            </div>
+                        </h4>
+                        <input type="button" onclick="start_stop(this)" value="START" id="start1" class="btn btn-success">
+                        <input type="button" onclick="split(this)" value="SPLIT" id="split1" class="btn btn-warning">
+                        <input type="button" onclick="reset(this)" value="RESET" id="reset1" class="btn btn-info">
+                </div>
+                <div class="col-xs-6 col-sm-6">
+                    <br>
+                    <h3 id="timerLabel2">00:00.00</h3>
+                    <h4>
+                        <div id='splits2'></div>
+                    </h4>
+                    <input type="button" onclick="start_stop(this)" value="START" id="start2" class="btn btn-success">
+                    <input type="button" onclick="split(this)" value="SPLIT" id="split2" class="btn btn-warning">
+                    <input type="button" onclick="reset(this)" value="RESET" id="reset2" class="btn btn-info">
+                </div>
+            </div>
+        </div>
+    </div>
+    <br>
+    <div class="container">
+        <h4 id="saveNotice" class="save">Your times have been saved!</h4>
     </div>
     <script src="{{url_for('static', filename='stopwatch.js')}}"></script>
 
