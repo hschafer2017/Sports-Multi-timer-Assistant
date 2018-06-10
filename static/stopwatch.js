@@ -20,39 +20,30 @@ function moveAll(obj) {
 
     if (obj.value == 'START') {
         $('#saveNotice').addClass('save')
-        status_sw1 = 1;
+        // status_sw1 = 1;
         status_sw2 = 1;
         status_sw3 = 1;
-        timer1();
+        // small_timer(status_sw1, time_sw1, timerLabel1);
+        // small_timer();
         timer2();
         timer3();
         startBtn1.value = "STOP";
         startBtn2.value = "STOP";
         startBtn3.value = "STOP";
         obj.value = "STOP";
-        $('#moveAllBtn').removeClass('.btn btn-success')
-        $('#moveAllBtn').addClass('.btn btn-danger')
-        $('#start1').removeClass('.btn btn-success')
-        $('#start1').addClass('.btn btn-danger')
-        $('#start2').removeClass('.btn btn-success')
-        $('#start2').addClass('.btn btn-danger')
+        start_all()
 
 
     }
     else {
-        status_sw1 = 0;
+        // stopTime(status_sw1)
         status_sw2 = 0;
         status_sw3 = 0;
         startBtn1.value = "START";
         startBtn2.value = "START";
         startBtn3.value = "START";
         obj.value = "START";
-        $('#moveAllBtn').removeClass('.btn btn-danger')
-        $('#moveAllBtn').addClass('.btn btn-success')
-        $('#start1').removeClass('.btn btn-danger')
-        $('#start1').addClass('.btn btn-success')
-        $('#start2').removeClass('.btn btn-danger')
-        $('#start2').addClass('.btn btn-success')
+        stop_all()
     }
 
 }
@@ -62,7 +53,7 @@ function resetAll(obj) {
     console.log('resetMain')
     if (stopwatch == 'resetMain') {
         console.log('reset if')
-        status_sw1 = 0;
+        // status_sw1 = 0;
         time_sw1 = 0;
         timerLabel1.innerHTML = "00:00.00";
         startBtn1.value = "START";
@@ -74,7 +65,7 @@ function resetAll(obj) {
         time_sw3 = 0;
         timerLabel3.innerHTML = "00:00.00";
         startBtn3.value = "START";
-        $("span").html("");
+        $("ol").html("");
         $('#saveNotice').addClass('save')
     }
 
@@ -87,14 +78,18 @@ function start_stop(obj) {
     if (stopwatch == 'start1') {
         if (status_sw1 == 0) {
             status_sw1 = 1;
-            timer1();
+            small_timer(status_sw1,time_sw1,timerLabel1);
+            // small_timer();
             $('#start1').removeClass('.btn btn-success')
             $('#start1').addClass('.btn btn-danger')
         }
         else {
-            status_sw1 = 0;
+            stopTime(status_sw1);
+            console.log(status_sw1);
             $('#start1').removeClass('.btn btn-danger')
             $('#start1').addClass('.btn btn-success')
+            $('#moveAllBtn').removeClass('.btn btn-danger')
+            $('#moveAllBtn').addClass('.btn btn-success')
         }
     }
 
@@ -109,6 +104,8 @@ function start_stop(obj) {
             status_sw2 = 0;
             $('#start2').removeClass('.btn btn-danger')
             $('#start2').addClass('.btn btn-success')
+            $('#moveAllBtn').removeClass('.btn btn-danger')
+            $('#moveAllBtn').addClass('.btn btn-success')
         }
     }
 
@@ -169,12 +166,12 @@ function reset(obj) {
 }
 
 
-function timer1() {
-    if (status_sw1 == 1) {
+function small_timer(status_sw, time_sw, timerLabel) {
+    if (status_sw == 1) {
         setTimeout(function() {
-            time_sw1++;
-            timerLabel1.innerHTML = getTime(time_sw1);
-            timer1();
+            time_sw++;
+            timerLabel.innerHTML = getTime(time_sw);
+            small_timer(status_sw, time_sw, timerLabel);
         }, 10);
     }
     checkAllBtn();
@@ -202,7 +199,11 @@ function timer3() {
     checkAllBtn();
 }
 
-
+function stopTime(status) {
+    status = 0;
+    console.log(status_sw1)
+    // console.log(status_sw1)
+}
 
 function checkAllBtn() {
 
@@ -246,14 +247,14 @@ function split(obj) {
     if (splits == 'split1') {
         splitLabel1.innerHTML = getTime(time_sw1);
         let blockDiv = document.getElementById("splits1");
-        let textSpan = document.createElement("span");
+        let textSpan = document.createElement("ol");
         textSpan.append(getTime(time_sw1) + " ");
         blockDiv.appendChild(textSpan);
     }
     if (splits == 'split2') {
         splitLabel1.innerHTML = getTime(time_sw2);
         let blockDiv = document.getElementById("splits2");
-        let textSpan = document.createElement("span");
+        let textSpan = document.createElement("ol");
         textSpan.append(getTime(time_sw1) + " ");
         blockDiv.appendChild(textSpan);
     }
@@ -285,3 +286,20 @@ $(function() {
 });
 
 // TEST ADDITION FOR GIT ROLLBACK
+function start_all() {
+    $('#moveAllBtn').removeClass('.btn btn-success')
+    $('#moveAllBtn').addClass('.btn btn-danger')
+    $('#start1').removeClass('.btn btn-success')
+    $('#start1').addClass('.btn btn-danger')
+    $('#start2').removeClass('.btn btn-success')
+    $('#start2').addClass('.btn btn-danger')
+}
+
+function stop_all() {
+    $('#moveAllBtn').removeClass('.btn btn-danger')
+    $('#moveAllBtn').addClass('.btn btn-success')
+    $('#start1').removeClass('.btn btn-danger')
+    $('#start1').addClass('.btn btn-success')
+    $('#start2').removeClass('.btn btn-danger')
+    $('#start2').addClass('.btn btn-success')
+}
