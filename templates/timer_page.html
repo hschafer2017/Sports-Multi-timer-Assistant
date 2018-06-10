@@ -68,8 +68,7 @@
             <option value="7">7</option>
             <option value="8">8</option>
         </select>
-                            <input type="submit" value="Submit"/>
-                            <input type="button" value="Init" onclick="init()" />
+                            <input type="submit" value="Submit" />
                         </div>
                     </form>
                 </div>
@@ -95,35 +94,35 @@
         </form>
         <br>
         <input type="button" value="START" id="moveAllBtn" class="btn btn-success" />
-        <input type ='button' value='RESET' id="resetAllBtn" class="btn btn-info"/>
+        <input type='button' value='RESET' id="resetAllBtn" class="btn btn-info" />
         <div class="container">
             <div class="row">
                 <div class="col-xs-4 col-sm-4">
                     <br>
-                    <h3 id='timerLabel0'>00:00:00</h4>
+                    <h3 id='timerNumber1'>00:00:00</h4>
                         <h4>
-                            <div id="splitLabel0">
+                            <div id="splitNumber1">
                             </div>
                         </h4>
-                        <input type="button" value="START" id="start0" class="btn btn-success">
-                        <input type="button" value="SPLIT"  id="split0" class="btn btn-warning">
-                        <input type="button" value="RESET" id="reset0" class="btn btn-info">
+                        <input type="button" value="START" id="start1" class="btn btn-success">
+                        <input type="button" value="SPLIT" id="split1" class="btn btn-warning">
+                        <input type="button" value="RESET" id="reset1" class="btn btn-info">
                 </div>
                 <div class="col-xs-4 col-sm-4">
                     <br>
-                    <h3 id="timerLabel1">00:00.00</h3>
+                    <h3 id="timerNumber2">00:00.00</h3>
                     <h4>
-                        <div id='splitLabel1'></div>
+                        <div id='splitNumber2'></div>
                     </h4>
-                    <input type="button" value="START" id="start1" class="btn btn-success">
-                    <input type="button" value="SPLIT" id="split1" class="btn btn-warning">
-                    <input type="button" value="RESET" id="reset1" class="btn btn-info">
+                    <input type="button" value="START" id="start2" class="btn btn-success">
+                    <input type="button" value="SPLIT" id="split2" class="btn btn-warning">
+                    <input type="button" value="RESET" id="reset2" class="btn btn-info">
                 </div>
                 <div class="col-xs-4 col-sm-4">
                     <br>
-                    <h3 id="timerLabel3">00:00.00</h3>
+                    <h3 id="timerNumber3">00:00.00</h3>
                     <h4>
-                        <div id='splitLabel3'></div>
+                        <div id='splitNumber3'></div>
                     </h4>
                     <input type="button" value="START" id="start3" class="btn btn-success">
                     <input type="button" value="SPLIT" id="split3" class="btn btn-warning">
@@ -137,7 +136,7 @@
         <h4 id="saveNotice" class="save">Your times have been saved!</h4>
     </div>
     <script type="text/javascript" src="https://code.jquery.com/jquery.min.js"></script>
-    <script src="{{url_for('static', filename='stopwatch2.js')}}"></script>
+    <script src="{{url_for('static', filename='stopwatch.js')}}"></script>
 
 </body>
 

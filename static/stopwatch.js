@@ -1,221 +1,134 @@
-var status_sw1 = 0;
-var status_sw2 = 0;
-var status_sw3 = 0;
+function stopwatch_setup() {
+    // Main Stopwatch: 
+    var stopwatch_main = new timing("timerMain", "moveAllBtn");
+    document.getElementById("moveAllBtn").onclick = function() {
 
-var time_sw1 = 0;
-var time_sw2 = 0;
-var time_sw3 = 0;
+        if (document.getElementById("moveAllBtn").value == 'START') {
+            stopwatch_main.status = 0;
+            stopwatches_one.status = 0;
+            stopwatches_two.status = 0;
+            stopwatches_three.status = 0;
 
-var startBtn1 = document.getElementById("start1");
-var startBtn2 = document.getElementById("start2");
-var startBtn3 = document.getElementById("moveAllBtn");
+        }
+        else {
+            stopwatch_main.status = 1;
+            stopwatches_one.status = 1;
+            stopwatches_two.status = 1;
+            stopwatches_three.status = 1;
+        }
+        stopwatch_main.start();
+        stopwatches_one.start();
+        stopwatches_two.start();
+        stopwatches_three.start();
 
-var timerLabel1 = document.getElementById("timerLabel1");
-var timerLabel2 = document.getElementById("timerLabel2");
-var timerLabel3 = document.getElementById("timerLabel3");
+    }
+    document.getElementById("resetAllBtn").onclick = function() {
+        stopwatch_main.reset()
+        stopwatches_one.reset();
+        stopwatches_two.reset();
+        stopwatches_three.reset();
+    };
 
-var moveAllBtn = document.getElementById("moveAllBtn");
+    // Stopwatch One 
+    var stopwatches_one = new timing("timerNumber1", "start1", "splitNumber1");
+    document.getElementById("start1").onclick = function() {
+        stopwatches_one.start();
 
-function moveAll(obj) {
+    };
+    document.getElementById("reset1").onclick = function() {
+        stopwatches_one.reset();
+    };
 
-    if (obj.value == 'START') {
-        $('#saveNotice').addClass('save')
-        // status_sw1 = 1;
-        status_sw2 = 1;
-        status_sw3 = 1;
-        // small_timer(status_sw1, time_sw1, timerLabel1);
-        // small_timer();
-        timer2();
-        timer3();
-        startBtn1.value = "STOP";
-        startBtn2.value = "STOP";
-        startBtn3.value = "STOP";
-        obj.value = "STOP";
-        start_all()
+    document.getElementById("split1").onclick = function() {
+        stopwatches_one.split();
+    };
 
+    // Stopwatch Two 
+    var stopwatches_two = new timing("timerNumber2", "start2", "splitNumber2");
+    document.getElementById("start2").onclick = function() {
+        stopwatches_two.start();
+    };
+    document.getElementById("reset2").onclick = function() {
+        stopwatches_two.reset();
+    };
+    document.getElementById("split2").onclick = function() {
+        stopwatches_two.split();
+    };
+
+    // Stopwatch Three  
+    var stopwatches_three = new timing("timerNumber3", "start3", "splitNumber3");
+    document.getElementById("start3").onclick = function() {
+        stopwatches_three.start();
+    };
+    document.getElementById("reset3").onclick = function() {
+        stopwatches_three.reset();
+    };
+    document.getElementById("split3").onclick = function() {
+        stopwatches_three.split();
+    };
+}
+
+
+// Loads timers on the page
+function timing(timerNumber, startNumber, splitNumber) {
+    this.status = 0;
+    this.time = 0;
+    this.timerNBR = document.getElementById(timerNumber);
+    this.startBTN = document.getElementById(startNumber);
+    this.splitNBR = document.getElementById(splitNumber);
+}
+
+// Split Function
+timing.prototype.split = function() {
+    let textSplit = document.createElement('ol');
+    textSplit.append(this.timerNBR.innerHTML = getTime(this.time));
+    this.splitNBR.appendChild(textSplit);
+
+};
+
+//  Starts the stopwatches, either through main start or individually
+timing.prototype.start = function() {
+    if (this.status == 0) {
+        this.status = 1;
+        this.startBTN.value = "STOP";
+        this.count();
 
     }
     else {
-        // stopTime(status_sw1)
-        status_sw2 = 0;
-        status_sw3 = 0;
-        startBtn1.value = "START";
-        startBtn2.value = "START";
-        startBtn3.value = "START";
-        obj.value = "START";
-        stop_all()
-    }
-
-}
-
-function resetAll(obj) {
-    var stopwatch = obj.id;
-    console.log('resetMain')
-    if (stopwatch == 'resetMain') {
-        console.log('reset if')
-        // status_sw1 = 0;
-        time_sw1 = 0;
-        timerLabel1.innerHTML = "00:00.00";
-        startBtn1.value = "START";
-        status_sw2 = 0;
-        time_sw2 = 0;
-        timerLabel2.innerHTML = "00:00.00";
-        startBtn2.value = "START";
-        status_sw3 = 0;
-        time_sw3 = 0;
-        timerLabel3.innerHTML = "00:00.00";
-        startBtn3.value = "START";
-        $("ol").html("");
-        $('#saveNotice').addClass('save')
-    }
-
-}
-
-function start_stop(obj) {
-
-    var stopwatch = obj.id;
-
-    if (stopwatch == 'start1') {
-        if (status_sw1 == 0) {
-            status_sw1 = 1;
-            small_timer(status_sw1,time_sw1,timerLabel1);
-            // small_timer();
-            $('#start1').removeClass('.btn btn-success')
-            $('#start1').addClass('.btn btn-danger')
-        }
-        else {
-            stopTime(status_sw1);
-            console.log(status_sw1);
-            $('#start1').removeClass('.btn btn-danger')
-            $('#start1').addClass('.btn btn-success')
-            $('#moveAllBtn').removeClass('.btn btn-danger')
-            $('#moveAllBtn').addClass('.btn btn-success')
-        }
-    }
-
-    if (stopwatch == 'start2') {
-        if (status_sw2 == 0) {
-            status_sw2 = 1;
-            timer2();
-            $('#start2').removeClass('.btn btn-success')
-            $('#start2').addClass('.btn btn-danger')
-        }
-        else {
-            status_sw2 = 0;
-            $('#start2').removeClass('.btn btn-danger')
-            $('#start2').addClass('.btn btn-success')
-            $('#moveAllBtn').removeClass('.btn btn-danger')
-            $('#moveAllBtn').addClass('.btn btn-success')
-        }
-    }
-
-    if (stopwatch == 'moveAllBtn') {
-        console.log('stop all')
-        if (status_sw3 == 0) {
-            console.log('start all if')
-            status_sw3 = 1;
-            timer3();
-        }
-        else {
-            status_sw3 = 0;
-            console.log('stop all else')
-        }
-    }
-
-    if (obj.value == "START") {
-        obj.value = "STOP";
-        $('#moveAllBtn').removeClass('.btn btn-success')
-        $('#moveAllBtn').addClass('.btn btn-danger')
-        $('#saveNotice').addClass('save')
+        this.status = 0;
+        this.startBTN.value = "START";
 
     }
-    else {
-        obj.value = "START";
-        $('#start2').removeClass('.btn btn-danger')
-        $('#start2').addClass('.btn btn-success')
-    }
-}
-
-
-function reset(obj) {
-    var stopwatch = obj.id;
     $('#saveNotice').addClass('save')
-    if (stopwatch == 'reset1') {
-        status_sw1 = 0;
-        time_sw1 = 0;
-        timerLabel1.innerHTML = "00:00.00";
-        startBtn1.value = "START";
-        $("#splits1").html("");
-    }
+};
 
-    if (stopwatch == 'reset2') {
-        status_sw2 = 0;
-        time_sw2 = 0;
-        timerLabel2.innerHTML = "00:00.00";
-        startBtn2.value = "START";
-        $("#splits2").html("")
-    }
-
-    if (stopwatch == 'reset3') {
-        status_sw3 = 0;
-        time_sw3 = 0;
-        timerLabel3.innerHTML = "00:00.00";
-        startBtn3.value = "START";
-    }
-
-}
-
-
-function small_timer(status_sw, time_sw, timerLabel) {
-    if (status_sw == 1) {
+//  Counts the stopwatch increments, both main and individual
+timing.prototype.count = function() {
+    if (this.status == 1) {
+        var that = this;
         setTimeout(function() {
-            time_sw++;
-            timerLabel.innerHTML = getTime(time_sw);
-            small_timer(status_sw, time_sw, timerLabel);
+            that.time++;
+            that.timerNBR.innerHTML = getTime(that.time);
+            that.count();
         }, 10);
+        document.getElementById("moveAllBtn").value = 'STOP';
+
     }
-    checkAllBtn();
-}
-
-function timer2() {
-    if (status_sw2 == 1) {
-        setTimeout(function() {
-            time_sw2++;
-            timerLabel2.innerHTML = getTime(time_sw2);
-            timer2();
-        }, 10);
+    else {
+        document.getElementById("moveAllBtn").value = 'START';
     }
-    checkAllBtn();
-}
+};
 
-function timer3() {
-    if (status_sw3 == 1) {
-        setTimeout(function() {
-            time_sw3++;
-            timerLabel3.innerHTML = getTime(time_sw3);
-            timer3();
-        }, 10);
-    }
-    checkAllBtn();
-}
+// Resets stopwatches individually
+timing.prototype.reset = function() {
+    this.status = 0;
+    this.time = 0;
+    this.startBTN.value = "START";
+    this.timerNBR.innerHTML = "00:00.00";
+    $('ol').html("")
+    $('#saveNotice').addClass('save')
 
-function stopTime(status) {
-    status = 0;
-    console.log(status_sw1)
-    // console.log(status_sw1)
-}
-
-function checkAllBtn() {
-
-    if (status_sw1 == 1 || status_sw2 == 1 || status_sw3 == 1) {
-        moveAllBtn.value = "STOP";
-    }
-
-    if (status_sw1 == 0 && status_sw2 == 0 && status_sw3 == 0) {
-        moveAllBtn.value = "START";
-    }
-
-}
+};
 
 
 function getTime(time) {
@@ -238,28 +151,7 @@ function getTime(time) {
 
 }
 
-
-var splitLabel1 = document.getElementById("split1")
-
-function split(obj) {
-
-    var splits = obj.id;
-    if (splits == 'split1') {
-        splitLabel1.innerHTML = getTime(time_sw1);
-        let blockDiv = document.getElementById("splits1");
-        let textSpan = document.createElement("ol");
-        textSpan.append(getTime(time_sw1) + " ");
-        blockDiv.appendChild(textSpan);
-    }
-    if (splits == 'split2') {
-        splitLabel1.innerHTML = getTime(time_sw2);
-        let blockDiv = document.getElementById("splits2");
-        let textSpan = document.createElement("ol");
-        textSpan.append(getTime(time_sw1) + " ");
-        blockDiv.appendChild(textSpan);
-    }
-
-}
+stopwatch_setup();
 
 // AJAX for timer.py
 
@@ -284,22 +176,3 @@ $(function() {
         $('#saveNotice').removeClass('save')
     })
 });
-
-// TEST ADDITION FOR GIT ROLLBACK
-function start_all() {
-    $('#moveAllBtn').removeClass('.btn btn-success')
-    $('#moveAllBtn').addClass('.btn btn-danger')
-    $('#start1').removeClass('.btn btn-success')
-    $('#start1').addClass('.btn btn-danger')
-    $('#start2').removeClass('.btn btn-success')
-    $('#start2').addClass('.btn btn-danger')
-}
-
-function stop_all() {
-    $('#moveAllBtn').removeClass('.btn btn-danger')
-    $('#moveAllBtn').addClass('.btn btn-success')
-    $('#start1').removeClass('.btn btn-danger')
-    $('#start1').addClass('.btn btn-success')
-    $('#start2').removeClass('.btn btn-danger')
-    $('#start2').addClass('.btn btn-success')
-}
