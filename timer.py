@@ -1,6 +1,10 @@
 import os
 from flask import Flask, redirect, render_template, request
+from pymongo import MongoClient
+import json
 
+MONGODB_URI = os.environ.get('MONGODB_URI')
+MONGODB_NAME = os.environ.get('MONGODB_NAME')
 
 app = Flask(__name__)
 
@@ -35,8 +39,9 @@ def timer_set(sport, team, username, meet, event, heat, lane_count):
 
 @app.route('/time', methods = ['POST'])
 def time():
+    print(request.form['final'])
+    print(request.form['splits'])
+    return "0"
     
-    return "time" 
-
 if __name__ == '__main__':
     app.run(host=os.getenv('IP'), port=int(os.getenv('PORT')), debug = True)

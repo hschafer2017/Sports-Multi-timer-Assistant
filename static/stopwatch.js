@@ -176,7 +176,7 @@ $('#timer_form').submit(function (e) {
     $.ajax({
         type: 'POST',
         url: '/time',
-        data: { race },
+        data: race,
         success: function(response) {
             console.log(response);
         },
