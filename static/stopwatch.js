@@ -28,11 +28,12 @@ function stopwatch_setup() {
         stopwatches_two.reset();
         stopwatches_three.reset();
     };
-    
+
     // Save Times Button 
     document.getElementById("saveTimes").onclick = function() {
-        // stopwatches_one.final()
-        stopwatches_one.saveTimes()
+        stopwatches_one.saveTimes();
+        stopwatches_two.saveTimes();
+        stopwatches_three.saveTimes();
     }
 
     // Stopwatch One 
@@ -159,31 +160,33 @@ function getTime(time) {
 
 stopwatch_setup();
 
+// Ajax for database 
 
-timing.prototype.saveTimes = function(ev) {
-    var form = $('#timer_form');
-        console.log('try')
-        console.log(this.splitNBR.textContent)
-        console.log(getTime(this.time))
-        let race = {
-        'final': this.time,
+timing.prototype.saveTimes = function() {
+    console.log('try')
+    console.log(this.splitNBR.textContent)
+    console.log(getTime(this.time))
+    let race = {
+        'final': getTime(this.time),
         'splits': this.splitNBR.textContent
+    }
+    console.log(race)
+
+$('#timer_form').submit(function (e) {
+    $.ajax({
+        type: 'POST',
+        url: '/time',
+        data: { race },
+        success: function(response) {
+            console.log(response);
+        },
+        error: function(error) {
+            console.log("error");
         }
-      console.log(race) 
-      
-        $.ajax({
-            url: '/time',
-            data: { race },
-            type: 'POST',
-            success: function(response) {
-                console.log('success');
-            },
-            error: function(error) {
-                console.log("error");
-            }
-        });
-
-        ev.preventDefault();
-        $('#saveNotice').removeClass('save')
-
+    });
+    e.preventDefault();
+    return true
+});
+    $('#saveNotice').removeClass('save')
+    return true
 };

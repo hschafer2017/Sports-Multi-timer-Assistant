@@ -35,6 +35,7 @@ def timer_set(sport, team, username, meet, event, heat, lane_count):
 
 @app.route('/time', methods = ['POST'])
 def time():
+    
     return "time" 
 
 if __name__ == '__main__':

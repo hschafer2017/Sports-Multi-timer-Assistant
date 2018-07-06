@@ -7,6 +7,7 @@ The Javascript function running the stopwatch is modified from Coding with Sara'
 Reset functions were modified for the reset button to reset all stopwatches instead of refreshing the page. 
 Split functions were added. 
 Start/Stop functions were modified for a style change in buttons using jQuery. 
+Save Button to pass values to Flask and into MongoDB were added using Ajax. 
 
 
 
