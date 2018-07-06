@@ -39,8 +39,19 @@ def timer_set(sport, team, username, meet, event, heat, lane_count):
 
 @app.route('/time', methods = ['POST'])
 def time():
-    print(request.form['final'])
-    print(request.form['splits'])
+    time = request.form['final']
+    split = request.form['splits']
+    
+    time_data = {
+        'final': time, 
+        'splits': split,
+    }
+    
+    with MongoClient(MONGODB_URI) as conn: 
+        db = conn[MONGODB_NAME]
+        coll = db['final-times']
+        coll.insert(time_data)
+        
     return "0"
     
 if __name__ == '__main__':
