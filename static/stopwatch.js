@@ -28,6 +28,12 @@ function stopwatch_setup() {
         stopwatches_two.reset();
         stopwatches_three.reset();
     };
+    
+    // Save Times Button 
+    document.getElementById("saveTimes").onclick = function() {
+        // stopwatches_one.final()
+        stopwatches_one.saveTimes()
+    }
 
     // Stopwatch One 
     var stopwatches_one = new timing("timerNumber1", "start1", "splitNumber1");
@@ -153,37 +159,31 @@ function getTime(time) {
 
 stopwatch_setup();
 
-// AJAX for timer.py
 
-$(function() {
-    var frm = $('#timer_form');
-    frm.submit(function(ev) {
-        var lane1 = document.getElementById('timerNumber1');
-        // var lane1_text = lane1.textContent;
-        var lane2 = document.getElementById('timerNumber2');
-        var lane3 = document.getElementById('timerNumber3');
-        var split1 = document.getElementById('splitNumber1');
+timing.prototype.saveTimes = function(ev) {
+    var form = $('#timer_form');
         console.log('try')
+        console.log(this.splitNBR.textContent)
+        console.log(getTime(this.time))
+        let race = {
+        'final': this.time,
+        'splits': this.splitNBR.textContent
+        }
+      console.log(race) 
+      
         $.ajax({
             url: '/time',
-            data: {
-            // "LN_ONE": { lane1.textContent : ["SPLIT_ONE" : split1.textContent]}, 
-            'LN_TWO': lane2.textContent,
-            'LN_THREE': lane3.textContent
-            },
+            data: { race },
             type: 'POST',
             success: function(response) {
-                console.log(lane1.textContent)
-                console.log(split1.textContent);
+                console.log('success');
             },
             error: function(error) {
                 console.log("error");
-                console.log(lane1.textContent)
-                console.log(split1.textContent)
             }
         });
 
         ev.preventDefault();
         $('#saveNotice').removeClass('save')
-    });
-});
+
+};

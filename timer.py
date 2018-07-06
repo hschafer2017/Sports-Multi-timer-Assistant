@@ -35,11 +35,7 @@ def timer_set(sport, team, username, meet, event, heat, lane_count):
 
 @app.route('/time', methods = ['POST'])
 def time():
-    LN_ONE = request.form['LN_ONE']
-    LN_TWO = request.form['LN_TWO']
-    LN_THREE = request.form['LN_THREE']
-    SPLIT_ONE = request.form['SPLIT_ONE']
-    return LN_ONE 
+    return "time" 
 
 if __name__ == '__main__':
     app.run(host=os.getenv('IP'), port=int(os.getenv('PORT')), debug = True)
