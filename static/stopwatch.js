@@ -125,7 +125,7 @@ timing.prototype.reset = function() {
     this.time = 0;
     this.startBTN.value = "START";
     this.timerNBR.innerHTML = "00:00.00";
-    $('ol').html("")
+    $(this.splitNBR).find('ol').html("")
     $('#saveNotice').addClass('save')
 
 };
@@ -158,21 +158,32 @@ stopwatch_setup();
 $(function() {
     var frm = $('#timer_form');
     frm.submit(function(ev) {
-        var h1 = document.getElementsByTagName('h1')[0]
+        var lane1 = document.getElementById('timerNumber1');
+        // var lane1_text = lane1.textContent;
+        var lane2 = document.getElementById('timerNumber2');
+        var lane3 = document.getElementById('timerNumber3');
+        var split1 = document.getElementById('splitNumber1');
         console.log('try')
         $.ajax({
             url: '/time',
-            data: { 'time': h1.textContent },
+            data: {
+            // "LN_ONE": { lane1.textContent : ["SPLIT_ONE" : split1.textContent]}, 
+            'LN_TWO': lane2.textContent,
+            'LN_THREE': lane3.textContent
+            },
             type: 'POST',
             success: function(response) {
-                console.log("success");
+                console.log(lane1.textContent)
+                console.log(split1.textContent);
             },
             error: function(error) {
                 console.log("error");
+                console.log(lane1.textContent)
+                console.log(split1.textContent)
             }
         });
 
         ev.preventDefault();
         $('#saveNotice').removeClass('save')
-    })
+    });
 });
