@@ -90,7 +90,6 @@
     <div class="timer">
         <form action="/time" method='POST' id='timer_form'>
             <h1><time id='timerMain'>00:00:00</time></h1>
-            <button type="submit" id = 'saveTimes' name ='time' class="btn btn-primary">Save Times</button>
         <br>
         <input type="button" value="START" id="moveAllBtn" class="btn btn-success" />
         <input type='button' value='RESET' id="resetAllBtn" class="btn btn-info" />
@@ -100,8 +99,7 @@
                     <br>
                     <h3 id='timerNumber1' class = "LN1">00:00:00</h4>
                         <h4>
-                            <div id="splitNumber1"> 
-                            </div>
+                            <div id="splitNumber1"> </div>
                         </h4>
                         <input type="button" value="START" id="start1" class="btn btn-success">
                         <input type="button" value="SPLIT" id="split1" class="btn btn-warning">
@@ -128,6 +126,8 @@
                     <input type="button" value="RESET" id="reset3" class="btn btn-info">
                 </div>
             </div>
+            <br>
+            <button type="submit" id = 'saveTimes' name ='time' class="btn btn-primary">Save Times</button>
         </div>
         </form>
     </div>

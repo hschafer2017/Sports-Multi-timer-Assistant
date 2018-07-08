@@ -142,7 +142,7 @@ function getTime(time) {
 
     var min = Math.floor(time / 100 / 60);
     var sec = Math.floor(time / 100);
-    var mSec = time % 100;
+    var mSec = (time % 100);
 
     if (min < 10) {
         min = "0" + min;
@@ -152,6 +152,9 @@ function getTime(time) {
     }
     if (sec < 10) {
         sec = "0" + sec;
+    }
+    if (mSec < 10) {
+        mSec = "0" + mSec;
     }
 
     return min + ":" + sec + "." + mSec;
