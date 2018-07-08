@@ -41,7 +41,6 @@ def timer_set(sport, team, username, meet, event, heat, lane_count):
 def time():
     time = request.form['final']
     split = request.form['splits']
-   
     n = 9
     splits = [split[i:i+n] for i in range(0, len(split), n)]
     
@@ -49,6 +48,7 @@ def time():
         'final': time, 
         'splits': splits,
     }
+    
     
     with MongoClient(MONGODB_URI) as conn: 
         db = conn[MONGODB_NAME]
