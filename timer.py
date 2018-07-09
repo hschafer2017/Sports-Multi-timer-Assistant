@@ -34,21 +34,31 @@ def timer_setup(sport, team, username, meet):
 
 @app.route('/<sport>/<team>/<username>/<meet>/<event>/<heat>/<lane_count>')
 def timer_set(sport, team, username, meet, event, heat, lane_count):
-    lanes = int(lane_count)
     return render_template('timer_page.html', username = username, team = team, sport = sport, meet = meet, event = event, heat = heat, lane_count = lane_count)
 
 @app.route('/time', methods = ['POST'])
 def time():
+    event = request.form['Event']
+    heat = request.form['Heat']
+    lane_count = request.form['Lanes']
+    lanes = int(lane_count)
     time = request.form['final']
+    
     split = request.form['splits']
     n = 9
     splits = [split[i:i+n] for i in range(0, len(split), n)]
     
-    time_data = {
-        'final': time, 
-        'splits': splits,
-    }
+    print(lanes)
+    print(heat)
+    print(event)
     
+    time_data = {
+        lanes :
+        {
+            'final': time, 
+            'splits': splits,
+        }
+    }
     
     with MongoClient(MONGODB_URI) as conn: 
         db = conn[MONGODB_NAME]

@@ -73,14 +73,15 @@
                     </form>
                 </div>
                 <div class="row">
+                    <form action="/time" method='POST' id='timer_form'>
                     <div class="col-xs-4 col-sm-4">
-                        <h4>{{event}}</h3>
+                        <h4 name='Event'>{{event}}</h3>
                     </div>
                     <div class="col-xs-4 col-sm-4">
-                        <h4>Heat: {{heat}}</h3>
+                        <h4 name="Heat">Heat: {{heat}}</h3>
                     </div>
                     <div class="col-xs-4 col-sm-4">
-                        <h4>Lanes: {{lane_count}}</h3>
+                        <h4 name="Lanes">Lanes: {{lane_count}}</h3>
                     </div>
                 </div>
             </div>
@@ -88,7 +89,7 @@
     </div>
     <br>
     <div class="timer">
-        <form action="/time" method='POST' id='timer_form'>
+        
             <h1><time id='timerMain'>00:00:00</time></h1>
         <br>
         <input type="button" value="START" id="moveAllBtn" class="btn btn-success" />

@@ -1,1 +1,1 @@
-web: gunicorn sports-timer-assistant:app
+web: gunicorn timer:app
