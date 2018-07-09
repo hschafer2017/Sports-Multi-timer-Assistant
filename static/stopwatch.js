@@ -169,10 +169,15 @@ timing.prototype.saveTimes = function() {
     console.log('try')
     console.log(this.splitNBR.textContent)
     console.log(getTime(this.time))
+    
     let race = {
+        'meet' : $("#meet_id").val(),
+        'event': $("#event_id").val(),
+        'heat' : $("#heat_id").val(), 
+        'lanes' : $("#lane_id").val(),
         'final': getTime(this.time),
-        'splits': this.splitNBR.textContent
-    }
+        'splits': this.splitNBR.textContent,
+                }
     console.log(race)
 
 $('#timer_form').submit(function (e) {

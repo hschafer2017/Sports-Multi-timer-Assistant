@@ -36,7 +36,7 @@
                     <form action="/{{sport}}/{{team}}/{{username}}/{{meet}}/new" method="POST">
                         <div class="col-xs-4 col-sm-4">
                             <p>Event: </p>
-                            <select name="Event">
+                            <select name="event">
             <option value="50 Freestyle">50 Freestyle</option>
             <option value="500 Freestyle">500 Freestyle</option>
             <option value="100 Butterfly">100 Butterfly</option>
@@ -46,7 +46,7 @@
                         </div>
                         <div class="col-xs-4 col-sm-4">
                             <p>Heat: </p>
-                            <select name="Heat">
+                            <select name="heat">
             <option value='1'>1</option>
             <option value="2">2</option>
             <option value="3">3</option>
@@ -58,7 +58,7 @@
                         </div>
                         <div class="col-xs-4 col-sm-4">
                             <p>Number of Lanes: </p>
-                            <select name="Lanes">
+                            <select name="lanes">
             <option value="1">1</option>
             <option value="2">2</option>
             <option value="3">3</option>
@@ -72,25 +72,31 @@
                         </div>
                     </form>
                 </div>
+                
                 <div class="row">
                     <form action="/time" method='POST' id='timer_form'>
-                    <div class="col-xs-4 col-sm-4">
-                        <h4 name='Event'>{{event}}</h3>
-                    </div>
-                    <div class="col-xs-4 col-sm-4">
-                        <h4 name="Heat">Heat: {{heat}}</h3>
-                    </div>
-                    <div class="col-xs-4 col-sm-4">
-                        <h4 name="Lanes">Lanes: {{lane_count}}</h3>
-                    </div>
+                        <div class="col-xs-4 col-sm-4">
+                            <h4>{{event}}</h4>
+                            <input type="hidden" name="event" id="event_id" value="{{event}}">
+                        </div>
+                        <div class="col-xs-4 col-sm-4">
+                            <h4>Heat: {{heat}}</h4>
+                            <input type="hidden" name="heat" id="heat_id" value="{{heat}}">
+                        </div>
+                        <div class="col-xs-4 col-sm-4">
+                            <h4>Lanes: {{lanes}}</h4>
+                            <input type="hidden" id="lane_id" name="lanes" value="{{lanes}}">
+                        </div>
                 </div>
+                
             </div>
         </div>
     </div>
     <br>
+    <input type="hidden" name="meet" id="meet_id" value="{{meet}}">
     <div class="timer">
-        
-            <h1><time id='timerMain'>00:00:00</time></h1>
+
+        <h1><time id='timerMain'>00:00:00</time></h1>
         <br>
         <input type="button" value="START" id="moveAllBtn" class="btn btn-success" />
         <input type='button' value='RESET' id="resetAllBtn" class="btn btn-info" />
@@ -98,7 +104,7 @@
             <div class="row">
                 <div class="col-xs-4 col-sm-4">
                     <br>
-                    <h3 id='timerNumber1' class = "LN1">00:00:00</h4>
+                    <h3 id='timerNumber1' class="LN1">00:00:00</h4>
                         <h4>
                             <div id="splitNumber1"> </div>
                         </h4>
@@ -128,11 +134,12 @@
                 </div>
             </div>
             <br>
-            <button type="submit" id = 'saveTimes' name ='time' class="btn btn-primary">Save Times</button>
+            <button type="submit" id='saveTimes' name='time' class="btn btn-primary">Save Times</button>
         </div>
         </form>
     </div>
     <br>
+    
     <div class="container">
         <h4 id="saveNotice" class="save">Your times have been saved!</h4>
     </div>
