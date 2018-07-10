@@ -21,9 +21,9 @@ function stopwatch_setup() {
         stopwatches_two.start();
         stopwatches_three.start();
 
-    }
+    };
     document.getElementById("resetAllBtn").onclick = function() {
-        stopwatch_main.reset()
+        stopwatch_main.reset();
         stopwatches_one.reset();
         stopwatches_two.reset();
         stopwatches_three.reset();
@@ -32,9 +32,9 @@ function stopwatch_setup() {
     // Save Times Button 
     document.getElementById("saveTimes").onclick = function() {
         stopwatches_one.saveTimes();
-        stopwatches_two.saveTimes();
-        stopwatches_three.saveTimes();
-    }
+        // stopwatches_two.saveTimes();
+        // stopwatches_three.saveTimes();
+    };
 
     // Stopwatch One 
     var stopwatches_one = new timing("timerNumber1", "start1", "splitNumber1");
@@ -167,18 +167,18 @@ stopwatch_setup();
 
 timing.prototype.saveTimes = function() {
     console.log('try')
-    console.log(this.splitNBR.textContent)
-    console.log(getTime(this.time))
+    console.log($('#splitNumber1').val())
+    console.log($("#timerNumber1").val())
     
     let race = {
         'meet' : $("#meet_id").val(),
         'event': $("#event_id").val(),
         'heat' : $("#heat_id").val(), 
         'lanes' : $("#lane_id").val(),
-        'final': getTime(this.time),
-        'splits': this.splitNBR.textContent,
+        'final': $("#timerNumber1").val(),
+        'splits': $('#splitNumber1').val(),
                 }
-    console.log(race)
+    
 
 $('#timer_form').submit(function (e) {
     $.ajax({
@@ -192,7 +192,7 @@ $('#timer_form').submit(function (e) {
             console.log("error");
         }
     });
-    e.preventDefault();
+    e.preventDefault(); 
     return true
 });
     $('#saveNotice').removeClass('save')

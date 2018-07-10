@@ -9,40 +9,59 @@
     <script type="text/javascript" src="https://code.jquery.com/jquery.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/hover.css/2.1.1/css/hover-min.css" type="text/css" />
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
     <link rel="stylesheet" href="{{ url_for ('static', filename = 'style.css')}}" type="text/css" />
     <title>Sports Multi-Timer Assistant</title>
 </head>
 
 <body>
-    <div class="container">
-        <div class="row">
-            <div class="col-xs-12 col-sm-12">
-                <div class="welcome">
-                    <h2>Sports Timing Assistant!</h2>
+    <div class="background">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-4 col-sm-4">
+                    <div class="welcome">
+                        <h2>Timing Assistant</h2>
+                        <br>
+                        <br>
+                        <br>
+                        <br>
+                            <form action="/login" method="POST">
+                                <div class="row">
+                                    <br>
+                                    <br>
+                                    <select name="sport" class="form-control input-sm">
+                                    <option value="Swimming">Swimming</option>
+                                </select>
+                                </div>
+                                <br>
+                                <br>
+                                <div class="row">
+                                    <input type="text" class="form-control" name="team" placeholder="Team Name" />
+                                </div>
+                                <br>
+                                <br>
+                                <div class="row">
+                                    <input type="text" class="form-control" name="username" placeholder="Your name" />
+                                </div>
+                                <br>
+                                <br>
+                                <div class="row">
+                                    <input type="text" class="form-control" name="meet" placeholder="Meet Name" />
+                                </div>
+                                <br>
+                                <br>
+                                <div class="row">
+                                    <input type="submit" name="submit" placeholder="submit" class="btn btn-default" />
+                                </div>
+                            </form>
+                    
+                    <div class="col-xs-8 col-sm-8">
 
-                    <h6>Access your team's account to start timing!</h6>
-                    <form action="/login" method="POST">
-                        <div class="row">
-                            <select name="sport">
-        <option value="Swimming">Swimming</option>
-        </select>
-                        </div>
-                        <div class="row">
-                            <input type="text" name="team" placeholder="Team Name" />
-                        </div>
-                        <div class="row">
-                            <input type="text" name="username" placeholder="Your name" />
-                        </div>
-                        <div class="row">
-                            <input type="text" name="meet" placeholder="Meet Name" />
-                        </div>
-                        <div class="row">
-                            <input type="submit" name="submit" placeholder="submit" class="btn-info btn-md" />
-                        </div>
-                    </form>
+                    </div>
                 </div>
             </div>
         </div>
+    </div>
     </div>
 </body>
 

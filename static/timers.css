@@ -1,0 +1,50 @@
+body {
+    background-color: #FAFAFA;
+    text-align: center;
+    font-family: 'Open Sans', sans-serif;
+}
+
+.welcome {
+    text-align: left;
+}
+h2 {
+    text-align: left;
+}
+
+h4 {
+   text-align: left; 
+}
+
+h5 {
+    text-align: center;
+}
+
+.timer {
+    text-align: center;
+    vertical-align: middle;
+}
+
+.main {
+    text-align: center;
+}
+
+
+.events {
+    vertical-align: middle;
+}
+
+#submit {
+    text-align: right;
+}
+
+.center {
+    text-align: center;
+}
+
+.form {
+    text-align: left;
+}
+
+.save {
+    display: none;
+}

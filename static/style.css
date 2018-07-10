@@ -1,26 +1,20 @@
-body {
-    background-color: #FAFAFA;
+body,
+html {
+    height: 100%;
+}
+
+.background {
+    background-image: url('../static/clocks.jpg');
+    height: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    color: black;
+    font-family: 'Open Sans', sans-serif;
 }
 
 .welcome {
-    text-align: center;
-}
-h2 {
-    text-align: center;
+    text-align: left;
+    top: 50%;
 }
 
-h5 {
-   text-align: left; 
-}
-
-.timer {
-    text-align: center;
-}
-
-.center {
-    text-align: center;
-}
-
-.save {
-    display: none;
-}

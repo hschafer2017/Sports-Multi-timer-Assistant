@@ -9,8 +9,8 @@
     <script type="text/javascript" src="https://code.jquery.com/jquery.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/hover.css/2.1.1/css/hover-min.css" type="text/css" />
-    <link rel="stylesheet" href="{{ url_for ('static', filename = 'style.css')}}" type="text/css" />
-
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for ('static', filename = 'timers.css')}}" type="text/css" />
     <title>Sports Multi-Timer Assistant</title>
 </head>
 
@@ -19,6 +19,8 @@
         <div class="row">
             <h2>Timing Assistant</h2>
         </div>
+        <br>
+        <br>
         <div class="row">
             <div class="col-xs-12 col-sm-12">
                 <h4>Welcome to {{team}}'s Timing Assistant. You are logged in as {{username}}.</h4>
@@ -26,27 +28,34 @@
             </div>
         </div>
         <br>
-        <div class="row">
-            <div class="col-xs-12 col-sm-12">
-                <div class="center">
-                    <h5>Please choose your event:</h5>
-                </div>
-                <br>
+        <div class="main">
+            <div class="container">
                 <div class="row">
-                    <form action="/{{sport}}/{{team}}/{{username}}/{{meet}}/new" method="POST">
-                        <div class="col-xs-4 col-sm-4">
-                            <p>Event: </p>
-                            <select name="event">
+
+                    <div class="col-xs-3 col-sm-3 form">
+                        <div class="center">
+                            <h5>Please choose your event:</h5>
+                        </div>
+                        <br>
+
+                        <form action="/{{sport}}/{{team}}/{{username}}/{{meet}}/new" method="POST">
+                            <div class="row">
+
+                                <p>Event: </p>
+
+                                <select name="event" class="form-control input-sm">
             <option value="50 Freestyle">50 Freestyle</option>
             <option value="500 Freestyle">500 Freestyle</option>
             <option value="100 Butterfly">100 Butterfly</option>
             <option value="100 Backstroke">100 Backstroke</option>
             <option value="200 Freestyle">200 Freestyle</option>
         </select>
-                        </div>
-                        <div class="col-xs-4 col-sm-4">
-                            <p>Heat: </p>
-                            <select name="heat">
+                            </div>
+                            <br>
+                            <div class="row">
+                                <p>Heat: </p>
+
+                                <select name="heat" class="form-control input-sm">
             <option value='1'>1</option>
             <option value="2">2</option>
             <option value="3">3</option>
@@ -55,10 +64,12 @@
             <option value="6">6</option>
             <option value="7">7</option>
         </select>
-                        </div>
-                        <div class="col-xs-4 col-sm-4">
-                            <p>Number of Lanes: </p>
-                            <select name="lanes">
+                            </div>
+                            <br>
+                            <div class="row">
+                                <p>Number of Lanes: </p>
+
+                                <select name="lanes" class="form-control input-sm">
             <option value="1">1</option>
             <option value="2">2</option>
             <option value="3">3</option>
@@ -68,80 +79,87 @@
             <option value="7">7</option>
             <option value="8">8</option>
         </select>
-                            <input type="submit" value="Submit" />
+
+                            </div>
+                            <br>
+                            <input type="submit" id='submit' class='btn btn-default' value="Submit" />
+                        </form>
+                    </div>
+
+                    <form action="/time" method='POST' id='timer_form'>
+                        <div class="col-xs-9 col-sm-9 events" align='center'>
+                            <br>
+                            <br>
+                            <br>
+                            <h5>{{event}}</h5>
+                            <input type="hidden" name="event" id="event_id" value="{{event}}">
+                            <br>
+
+                            <h5>Heat: {{heat}}</h5>
+                            <input type="hidden" name="heat" id="heat_id" value="{{heat}}">
+                            <br>
+                            <h5>Lanes: {{lanes}}</h5>
+                            <input type="hidden" id="lane_id" name="lanes" value="{{lanes}}">
+                            <br>
+                            <button type="submit" id='saveTimes' name='time' class="btn btn-primary">Save Times</button>
                         </div>
                     </form>
-                </div>
-                
-                <div class="row">
-                    <form action="/time" method='POST' id='timer_form'>
-                        <div class="col-xs-4 col-sm-4">
-                            <h4>{{event}}</h4>
-                            <input type="hidden" name="event" id="event_id" value="{{event}}">
-                        </div>
-                        <div class="col-xs-4 col-sm-4">
-                            <h4>Heat: {{heat}}</h4>
-                            <input type="hidden" name="heat" id="heat_id" value="{{heat}}">
-                        </div>
-                        <div class="col-xs-4 col-sm-4">
-                            <h4>Lanes: {{lanes}}</h4>
-                            <input type="hidden" id="lane_id" name="lanes" value="{{lanes}}">
-                        </div>
-                </div>
-                
-            </div>
-        </div>
-    </div>
-    <br>
-    <input type="hidden" name="meet" id="meet_id" value="{{meet}}">
-    <div class="timer">
 
-        <h1><time id='timerMain'>00:00:00</time></h1>
-        <br>
-        <input type="button" value="START" id="moveAllBtn" class="btn btn-success" />
-        <input type='button' value='RESET' id="resetAllBtn" class="btn btn-info" />
-        <div class="container">
-            <div class="row">
-                <div class="col-xs-4 col-sm-4">
-                    <br>
-                    <h3 id='timerNumber1' class="LN1">00:00:00</h4>
-                        <h4>
-                            <div id="splitNumber1"> </div>
-                        </h4>
-                        <input type="button" value="START" id="start1" class="btn btn-success">
-                        <input type="button" value="SPLIT" id="split1" class="btn btn-warning">
-                        <input type="button" value="RESET" id="reset1" class="btn btn-info">
                 </div>
-                <div class="col-xs-4 col-sm-4">
+            </div>
+            <!--</div>-->
+            <br>
+            <input type="hidden" name="meet" id="meet_id" value="{{meet}}">
+            <div class="timer">
+
+                <h1><time id='timerMain'>00:00:00</time></h1>
+                <br>
+                <input type="button" value="START" id="moveAllBtn" class="btn btn-success" />
+                <input type='button' value='RESET' id="resetAllBtn" class="btn btn-info" />
+                <div class="container">
+                    <div class="row">
+                        <div class="col-xs-4 col-sm-4 watch">
+                            <br>
+                            <h3 id='timerNumber1' class="LN1">00:00:00</h4>
+                                <h4>
+                                    <div id="splitNumber1"> </div>
+                                </h4>
+                                <input type="button" value="START" id="start1" class="btn btn-success">
+                                <input type="button" value="SPLIT" id="split1" class="btn btn-warning">
+                                <input type="button" value="RESET" id="reset1" class="btn btn-info">
+                        </div>
+                        <div class="col-xs-4 col-sm-4 watch">
+                            <br>
+                            <h3 id="timerNumber2">00:00.00</h3>
+                            <h4>
+                                <div id='splitNumber2'> </div>
+                            </h4>
+                            <input type="button" value="START" id="start2" class="btn btn-success">
+                            <input type="button" value="SPLIT" id="split2" class="btn btn-warning">
+                            <input type="button" value="RESET" id="reset2" class="btn btn-info">
+                        </div>
+                        <div class="col-xs-4 col-sm-4 watch">
+                            <br>
+                            <h3 id="timerNumber3">00:00.00</h3>
+                            <h4>
+                                <div id='splitNumber3'> </div>
+                            </h4>
+                            <input type="button" value="START" id="start3" class="btn btn-success">
+                            <input type="button" value="SPLIT" id="split3" class="btn btn-warning">
+                            <input type="button" value="RESET" id="reset3" class="btn btn-info">
+                        </div>
+                    </div>
                     <br>
-                    <h3 id="timerNumber2">00:00.00</h3>
-                    <h4>
-                        <div id='splitNumber2'> </div>
-                    </h4>
-                    <input type="button" value="START" id="start2" class="btn btn-success">
-                    <input type="button" value="SPLIT" id="split2" class="btn btn-warning">
-                    <input type="button" value="RESET" id="reset2" class="btn btn-info">
+                    <!--<button type="submit" id='saveTimes' name='time' class="btn btn-primary">Save Times</button>-->
                 </div>
-                <div class="col-xs-4 col-sm-4">
-                    <br>
-                    <h3 id="timerNumber3">00:00.00</h3>
-                    <h4>
-                        <div id='splitNumber3'> </div>
-                    </h4>
-                    <input type="button" value="START" id="start3" class="btn btn-success">
-                    <input type="button" value="SPLIT" id="split3" class="btn btn-warning">
-                    <input type="button" value="RESET" id="reset3" class="btn btn-info">
-                </div>
+
             </div>
             <br>
-            <button type="submit" id='saveTimes' name='time' class="btn btn-primary">Save Times</button>
+
+            <div class="container">
+                <h4 id="saveNotice" class="save">Your times have been saved!</h4>
+            </div>
         </div>
-        </form>
-    </div>
-    <br>
-    
-    <div class="container">
-        <h4 id="saveNotice" class="save">Your times have been saved!</h4>
     </div>
     <script type="text/javascript" src="https://code.jquery.com/jquery.min.js"></script>
     <script src="{{url_for('static', filename='stopwatch.js')}}"></script>

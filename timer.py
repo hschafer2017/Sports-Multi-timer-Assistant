@@ -37,35 +37,90 @@ def timer_set(sport, team, username, meet, event, heat, lanes):
 
 @app.route('/time', methods = ['POST'])
 def time():
+    print("**************************")
     meet = request.form['meet']
     event = request.form['event']
     heat = request.form['heat']
     lanes = request.form['lanes']
-    
-    print(lanes)
-    print(heat)
-    print(event)
-    print(meet)
+    lane = int(lanes)
     
     time = request.form['final']
+    
     split = request.form['splits']
     n = 9
     splits = [split[i:i+n] for i in range(0, len(split), n)]
+
     
+    # time_data = {
+    #         meet : {
+    #             event : {
+    #                 heat : {
+    #                     lanes : {
+    #                         'final': time, 
+    #                         'splits': splits,
+    #                         }
+    #                     }  
+    #                 }
+    #             }
+    #         }
+
     
-    time_data = {
-            meet : {
-                event : {
-                    heat : {
-                        lanes : {
-                            'final': time, 
-                            'splits': splits,
+    # lane = int(lanes) + 1
+
+    # times = {
+    #         meet : {
+    #             event : {
+    #                 heat : {
+    #                     str(lanes) : {
+    #                         'final': time, 
+    #                         'splits': splits,
+    #                         }
+    #                     }  
+    #                 }                
+                    
+    #             }
+    #         }
+            
+    # time_data.update(times)
+    
+    for i in range(0, lane):
+        i + 1
+        time_data = {
+                meet : {
+                    event : {
+                        '1' : {
+                            str(i) : {
+                                'final': time, 
+                                'splits': splits,
+                                },
+                            str(i) : {
+                                'final': time, 
+                                'splits': splits,
+                            },
+                            str(i) : {
+                                'final': time, 
+                                'splits': splits,
                             }
-                        }  
+                            }, 
+                    '2' : { lanes : {
+                                'final': time, 
+                                'splits': splits,
+                                },
+                            str(lane) : {
+                                'final': time, 
+                                'splits': splits,
+                            },
+                            '3' : {
+                                'final': time, 
+                                'splits': splits,
+                            }
+                            
+                        },
+                        }
                     }
                 }
-            }
-
+    
+    print(time_data)
     
     with MongoClient(MONGODB_URI) as conn: 
         db = conn[MONGODB_NAME]
