@@ -167,16 +167,24 @@ stopwatch_setup();
 
 timing.prototype.saveTimes = function() {
     console.log('try')
-    console.log($('#splitNumber1').val())
-    console.log($("#timerNumber1").val())
+    console.log($('#splitNumber1').text())
+    console.log($("#timerNumber1").text())
     
     let race = {
         'meet' : $("#meet_id").val(),
         'event': $("#event_id").val(),
         'heat' : $("#heat_id").val(), 
-        'lanes' : $("#lane_id").val(),
-        'final': $("#timerNumber1").val(),
-        'splits': $('#splitNumber1').val(),
+        'lanes1' : $("#lanes1").val(),
+        'lanes2' : $("#lanes2").val(),
+        'lanes3' : $("#lanes3").val(),
+        'final1' : $("#timerNumber1").text(),
+        'final2' : $("#timerNumber2").text(),
+        'final3' : $("#timerNumber3").text(),
+        'split1' : $("#splitNumber1").text(),
+        'split2' : $("#splitNumber2").text(),
+        'split3' : $("#splitNumber3").text(),
+        // 'final': getTime(this.time),
+        // 'splits': this.splitNBR.textContent,
                 }
     
 

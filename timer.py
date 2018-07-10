@@ -28,104 +28,57 @@ def get_user_page(sport, team, username, meet):
 def timer_setup(sport, team, username, meet):
     event = request.form['event']
     heat = request.form['heat']
-    lanes = request.form['lanes']
-    return redirect("/" + sport + "/" + team + "/" + username + "/" + meet + '/' + event + "/" + heat + "/" + lanes)
+    return redirect("/" + sport + "/" + team + "/" + username + "/" + meet + '/' + event + "/" + heat)
 
-@app.route('/<sport>/<team>/<username>/<meet>/<event>/<heat>/<lanes>')
-def timer_set(sport, team, username, meet, event, heat, lanes):
-    return render_template('timer_page.html', username = username, team = team, sport = sport, meet = meet, event = event, heat = heat, lanes = lanes)
+@app.route('/<sport>/<team>/<username>/<meet>/<event>/<heat>')
+def timer_set(sport, team, username, meet, event, heat):
+    return render_template('timer_page.html', username = username, team = team, sport = sport, meet = meet, event = event, heat = heat)
 
 @app.route('/time', methods = ['POST'])
 def time():
-    print("**************************")
     meet = request.form['meet']
     event = request.form['event']
     heat = request.form['heat']
-    lanes = request.form['lanes']
-    lane = int(lanes)
+    timer_one = request.form['lanes1']
+    timer_two = request.form['lanes2']
+    timer_three = request.form['lanes3']
+    final_one = request.form['final1']
+    final_two = request.form['final2']
+    final_three = request.form['final3']
+    split_one = request.form['split1']
+    split_two = request.form['split2']
+    split_three = request.form['split3']
     
-    time = request.form['final']
-    
-    split = request.form['splits']
     n = 9
-    splits = [split[i:i+n] for i in range(0, len(split), n)]
-
+    splits_one = [split_one[i:i+n] for i in range(0, len(split_one), n)]
+    splits_two = [split_two[i:i+n] for i in range(0, len(split_two), n)]
+    splits_three = [split_three[i:i+n] for i in range(0, len(split_three), n)]
     
-    # time_data = {
-    #         meet : {
-    #             event : {
-    #                 heat : {
-    #                     lanes : {
-    #                         'final': time, 
-    #                         'splits': splits,
-    #                         }
-    #                     }  
-    #                 }
-    #             }
-    #         }
-
+    meet_data = {
+    	"event": event,
+    	"heat": heat,
+    	"lanes": {
+    		timer_one: {
+    			'final': final_one, 
+                'splits': splits_one,
+    		},
+    		timer_two: {
+    			'final': final_two, 
+                'splits': splits_two,
+    		},
+    		timer_three: {
+    		'final': final_three, 
+            'splits': splits_three,
+    		}
+    	}
+    }
     
-    # lane = int(lanes) + 1
-
-    # times = {
-    #         meet : {
-    #             event : {
-    #                 heat : {
-    #                     str(lanes) : {
-    #                         'final': time, 
-    #                         'splits': splits,
-    #                         }
-    #                     }  
-    #                 }                
-                    
-    #             }
-    #         }
-            
-    # time_data.update(times)
-    
-    for i in range(0, lane):
-        i + 1
-        time_data = {
-                meet : {
-                    event : {
-                        '1' : {
-                            str(i) : {
-                                'final': time, 
-                                'splits': splits,
-                                },
-                            str(i) : {
-                                'final': time, 
-                                'splits': splits,
-                            },
-                            str(i) : {
-                                'final': time, 
-                                'splits': splits,
-                            }
-                            }, 
-                    '2' : { lanes : {
-                                'final': time, 
-                                'splits': splits,
-                                },
-                            str(lane) : {
-                                'final': time, 
-                                'splits': splits,
-                            },
-                            '3' : {
-                                'final': time, 
-                                'splits': splits,
-                            }
-                            
-                        },
-                        }
-                    }
-                }
-    
-    print(time_data)
+    print(meet_data)
     
     with MongoClient(MONGODB_URI) as conn: 
         db = conn[MONGODB_NAME]
         coll = db['final-times']
-        coll.insert(time_data)
+        coll.insert(meet_data)
         
     return "0"
     

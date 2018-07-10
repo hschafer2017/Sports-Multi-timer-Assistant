@@ -66,21 +66,7 @@
         </select>
                             </div>
                             <br>
-                            <div class="row">
-                                <p>Number of Lanes: </p>
-
-                                <select name="lanes" class="form-control input-sm">
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-            <option value="4">4</option>
-            <option value="5">5</option>
-            <option value="6">6</option>
-            <option value="7">7</option>
-            <option value="8">8</option>
-        </select>
-
-                            </div>
+       
                             <br>
                             <input type="submit" id='submit' class='btn btn-default' value="Submit" />
                         </form>
@@ -98,16 +84,12 @@
                             <h5>Heat: {{heat}}</h5>
                             <input type="hidden" name="heat" id="heat_id" value="{{heat}}">
                             <br>
-                            <h5>Lanes: {{lanes}}</h5>
-                            <input type="hidden" id="lane_id" name="lanes" value="{{lanes}}">
-                            <br>
-                            <button type="submit" id='saveTimes' name='time' class="btn btn-primary">Save Times</button>
+                            
                         </div>
-                    </form>
+                    
 
                 </div>
             </div>
-            <!--</div>-->
             <br>
             <input type="hidden" name="meet" id="meet_id" value="{{meet}}">
             <div class="timer">
@@ -124,19 +106,54 @@
                                 <h4>
                                     <div id="splitNumber1"> </div>
                                 </h4>
+                                
                                 <input type="button" value="START" id="start1" class="btn btn-success">
                                 <input type="button" value="SPLIT" id="split1" class="btn btn-warning">
                                 <input type="button" value="RESET" id="reset1" class="btn btn-info">
+                                <br>
+                                <div class="row lanes">
+                                <p>Lane Number: </p>
+
+                                <select id="lanes1" class="form-control input-sm">
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+            <option value="8">8</option>
+        </select>
+
+                            </div>
                         </div>
+                        
                         <div class="col-xs-4 col-sm-4 watch">
                             <br>
                             <h3 id="timerNumber2">00:00.00</h3>
                             <h4>
                                 <div id='splitNumber2'> </div>
                             </h4>
+                            
                             <input type="button" value="START" id="start2" class="btn btn-success">
                             <input type="button" value="SPLIT" id="split2" class="btn btn-warning">
                             <input type="button" value="RESET" id="reset2" class="btn btn-info">
+                            <br>
+                            <div class="row lanes">
+                                <p>Lane Number: </p>
+
+                                <select id="lanes2" class="form-control input-sm">
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+            <option value="8">8</option>
+        </select>
+
+                            </div>
                         </div>
                         <div class="col-xs-4 col-sm-4 watch">
                             <br>
@@ -144,13 +161,31 @@
                             <h4>
                                 <div id='splitNumber3'> </div>
                             </h4>
+                            
                             <input type="button" value="START" id="start3" class="btn btn-success">
                             <input type="button" value="SPLIT" id="split3" class="btn btn-warning">
                             <input type="button" value="RESET" id="reset3" class="btn btn-info">
+                            <br>
+                            <div class="row lanes">
+                                <p>Lane Number: </p>
+
+                                <select id="lanes3" class="form-control input-sm">
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+            <option value="8">8</option>
+        </select>
+
+                            </div>
                         </div>
                     </div>
                     <br>
-                    <!--<button type="submit" id='saveTimes' name='time' class="btn btn-primary">Save Times</button>-->
+                    <button type="submit" id='saveTimes' name='time' class="btn btn-primary">Save Times</button>
+                    </form>
                 </div>
 
             </div>

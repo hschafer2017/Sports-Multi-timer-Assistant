@@ -17,6 +17,7 @@ h4 {
 
 h5 {
     text-align: center;
+    font-size: 20px;
 }
 
 .timer {
@@ -28,6 +29,13 @@ h5 {
     text-align: center;
 }
 
+.lanes {
+    padding: 10px;
+}
+
+ol {
+    text-align: center;
+}
 
 .events {
     vertical-align: middle;
