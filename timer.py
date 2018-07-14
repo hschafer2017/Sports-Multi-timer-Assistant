@@ -42,8 +42,6 @@ def time():
     meet = request.form['meet']
     event = request.form['event']
     heat = request.form['heat']
-    # lanes = request.form['lanes'][0]
-    # print(lanes)
     timer_one = request.form['lanes1']
     timer_two = request.form['lanes2']
     timer_three = request.form['lanes3']
@@ -58,17 +56,6 @@ def time():
     splits_one = [split_one[i:i+n] for i in range(0, len(split_one), n)]
     splits_two = [split_two[i:i+n] for i in range(0, len(split_two), n)]
     splits_three = [split_three[i:i+n] for i in range(0, len(split_three), n)]
-    
-    print("hello here")
-    
-    # meet_data = {
-    # 	"event": event,
-    # 	"heat": heat,
-    # 	"lanes": lanes,
-    # }
-    
-    
-    
     
     meet_data = {
     	"event": event,
