@@ -4,18 +4,27 @@ html {
 }
 
 .background {
-    /*background-image: url('../static/Timer.png');*/
     background: linear-gradient(to top right, #00AAE4, #00BF76);
     height: 100%;
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
     color: black;
-    font-family: 'Open Sans', sans-serif;
+    font-family: 'Karla', sans-serif;
+}
+.title {
+    color: white;
+    text-align: center
 }
 
+
 .welcome {
-    text-align: left;
+    text-align: center;
+    padding-left: 30%;
+    padding-right: 30%;
+}
+.form {
     top: 50%;
+    left: 50%;
 }
 

@@ -1,7 +1,11 @@
 body {
-    background-color: white;
+    /*background-color: white;*/
     text-align: center;
-    font-family: 'Open Sans', sans-serif;
+    font-family: 'Karla', sans-serif;
+}
+.background {
+    background: linear-gradient(to top right, #00AAE4, #00BF76);
+    color: white;
 }
 
 .welcome {
@@ -9,6 +13,9 @@ body {
 }
 .main {
     text-align: center;
+}
+form {
+    text-align:center;
 }
 h2 {
     text-align: left;
@@ -23,8 +30,8 @@ h5 {
     font-size: 20px;
 }
 
-
 /*------------------------STOPWATCHES------------------------------*/
+
 .timer {
     text-align: center;
     vertical-align: middle;
@@ -35,7 +42,18 @@ h5 {
 #timerMain {
     font-size: 80px;
     font-weight: 700;
+    background: -webkit-linear-gradient(#00AAE4, #00BF76);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
+.times {
+    font-size: 60px;
+    font-weight: 600;
+    background: -webkit-linear-gradient(#00AAE4, #00BF76);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
 .watch {
     color: #00B5B1;
     font-size: 72px;
@@ -44,7 +62,10 @@ h5 {
 
 ol {
     text-align: center;
-    color: #00B5B1;
+    font-size: 26px;
+    background: -webkit-linear-gradient(#00AAE4, #00BF76);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
     font-weight: bolder;
 }
 
@@ -67,8 +88,8 @@ ol {
 .lanes {
     padding: 50px;
     font-size: 18px;
-    color: #00B5B1;
-    text-align: center;
+    color: #00AAE4;
+    text-align: left;
 }
 
 /*-----------------------SAVE TIMES--------------------*/
@@ -78,6 +99,7 @@ ol {
 }
 
 /*-------------------------BUTTONS-------------------------*/
+
 .btn-success {
     color: white;
     background: linear-gradient(to top right, #00AAE4, #00BF76);
