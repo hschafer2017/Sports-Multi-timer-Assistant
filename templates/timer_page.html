@@ -81,7 +81,7 @@
                             <input type="hidden" name="event" id="event_id" value="{{event}}">
                             <br>
 
-                            <h5>Heat: {{heat}}</h5>
+                            <h5>{{heat}}</h5>
                             <input type="hidden" name="heat" id="heat_id" value="{{heat}}">
                             <br>
                             
@@ -92,15 +92,15 @@
             </div>
             <br>
             <input type="hidden" name="meet" id="meet_id" value="{{meet}}">
+            
             <div class="timer">
 
                 <h1><time id='timerMain'>00:00:00</time></h1>
-                <br>
                 <input type="button" value="START" id="moveAllBtn" class="btn btn-success" />
                 <input type='button' value='RESET' id="resetAllBtn" class="btn btn-info" />
                 <div class="container">
                     <div class="row">
-                        <div class="col-xs-4 col-sm-4 watch">
+                        <div class="col-xs-hidden col-sm-4 watch">
                             <br>
                             <h3 id='timerNumber1' class="LN1">00:00:00</h4>
                                 <h4>
@@ -128,7 +128,7 @@
                             </div>
                         </div>
                         
-                        <div class="col-xs-4 col-sm-4 watch">
+                        <div class="col-xs-hidden col-sm-4 watch">
                             <br>
                             <h3 id="timerNumber2">00:00.00</h3>
                             <h4>
@@ -155,7 +155,7 @@
 
                             </div>
                         </div>
-                        <div class="col-xs-4 col-sm-4 watch">
+                        <div class="col-xs-hidden col-sm-4 watch">
                             <br>
                             <h3 id="timerNumber3">00:00.00</h3>
                             <h4>

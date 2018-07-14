@@ -1,11 +1,14 @@
 body {
-    background-color: #FAFAFA;
+    background-color: white;
     text-align: center;
     font-family: 'Open Sans', sans-serif;
 }
 
 .welcome {
     text-align: left;
+}
+.main {
+    text-align: center;
 }
 h2 {
     text-align: left;
@@ -20,21 +23,29 @@ h5 {
     font-size: 20px;
 }
 
+
+/*------------------------STOPWATCHES------------------------------*/
 .timer {
     text-align: center;
     vertical-align: middle;
+    /*font-size: 72px;*/
+    
+    color: #00B5B1;
 }
-
-.main {
-    text-align: center;
+#timerMain {
+    font-size: 80px;
+    font-weight: 700;
 }
-
-.lanes {
-    padding: 10px;
+.watch {
+    color: #00B5B1;
+    font-size: 72px;
+    font-weight: 600;
 }
 
 ol {
     text-align: center;
+    color: #00B5B1;
+    font-weight: bolder;
 }
 
 .events {
@@ -53,6 +64,57 @@ ol {
     text-align: left;
 }
 
+.lanes {
+    padding: 50px;
+    font-size: 18px;
+    color: #00B5B1;
+    text-align: center;
+}
+
+/*-----------------------SAVE TIMES--------------------*/
+
 .save {
     display: none;
+}
+
+/*-------------------------BUTTONS-------------------------*/
+.btn-success {
+    color: white;
+    background: linear-gradient(to top right, #00AAE4, #00BF76);
+    border-color: grey;
+}
+.btn-success:active {
+    color: white;
+    background: linear-gradient(to top right, #00AAE4, #00BF76);
+    border-color: grey;
+}
+.btn-warning {
+    color: white;
+    background: linear-gradient(to top right, #FF006E, #FF3B0F);
+    border-color: grey;
+}
+.btn-warning:active {
+    color: white;
+    background: linear-gradient(to top right, #FF006E, #FF3B0F);
+    border-color: grey;
+}
+.btn-info {
+    color: white;
+    background: linear-gradient(to top right, #663399, #6A5ACD);
+    border-color: grey;
+}
+.btn-info:active {
+    color: white;
+    background: linear-gradient(to top right, #663399, #6A5ACD);
+    border-color: grey;
+}
+.btn-primary {
+    color: white;
+    background: linear-gradient(to top right, #0000FF, #1E90FF);
+    border-color: grey;
+}
+.btn-primary:active {
+    color: white;
+    background: linear-gradient(to top right, #0000FF, #1E90FF);
+    border-color: grey;
 }

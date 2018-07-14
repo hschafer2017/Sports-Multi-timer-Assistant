@@ -26,8 +26,10 @@ def get_user_page(sport, team, username, meet):
 
 @app.route('/<sport>/<team>/<username>/<meet>/new', methods = ['POST'])
 def timer_setup(sport, team, username, meet):
-    event = request.form['event']
-    heat = request.form['heat']
+    event_name = request.form['event']
+    heat_num = request.form['heat']
+    event = "Event: " + event_name
+    heat = "Heat: " + heat_num
     return redirect("/" + sport + "/" + team + "/" + username + "/" + meet + '/' + event + "/" + heat)
 
 @app.route('/<sport>/<team>/<username>/<meet>/<event>/<heat>')
@@ -36,9 +38,12 @@ def timer_set(sport, team, username, meet, event, heat):
 
 @app.route('/time', methods = ['POST'])
 def time():
+    
     meet = request.form['meet']
     event = request.form['event']
     heat = request.form['heat']
+    # lanes = request.form['lanes'][0]
+    # print(lanes)
     timer_one = request.form['lanes1']
     timer_two = request.form['lanes2']
     timer_three = request.form['lanes3']
@@ -54,6 +59,17 @@ def time():
     splits_two = [split_two[i:i+n] for i in range(0, len(split_two), n)]
     splits_three = [split_three[i:i+n] for i in range(0, len(split_three), n)]
     
+    print("hello here")
+    
+    # meet_data = {
+    # 	"event": event,
+    # 	"heat": heat,
+    # 	"lanes": lanes,
+    # }
+    
+    
+    
+    
     meet_data = {
     	"event": event,
     	"heat": heat,
@@ -67,8 +83,8 @@ def time():
                 'splits': splits_two,
     		},
     		timer_three: {
-    		'final': final_three, 
-            'splits': splits_three,
+        		'final': final_three, 
+                'splits': splits_three,
     		}
     	}
     }

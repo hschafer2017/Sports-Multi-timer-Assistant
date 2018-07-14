@@ -4,7 +4,8 @@ html {
 }
 
 .background {
-    background-image: url('../static/clocks.jpg');
+    /*background-image: url('../static/Timer.png');*/
+    background: linear-gradient(to top right, #00AAE4, #00BF76);
     height: 100%;
     background-position: center;
     background-repeat: no-repeat;

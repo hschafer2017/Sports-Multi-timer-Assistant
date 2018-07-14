@@ -1,3 +1,5 @@
+let numLanes = 3;
+
 function stopwatch_setup() {
     // Main Stopwatch: 
     var stopwatch_main = new timing("timerMain", "moveAllBtn");
@@ -165,10 +167,17 @@ stopwatch_setup();
 
 // Ajax for database 
 
+
 timing.prototype.saveTimes = function() {
-    console.log('try')
-    console.log($('#splitNumber1').text())
-    console.log($("#timerNumber1").text())
+    
+    // let lanes = getLanesList();
+    
+    // let race = {
+    //     'meet' : $("#meet_id").val(),
+    //     'event': $("#event_id").val(),
+    //     'heat' : $("#heat_id").val(),
+    //     'lanes' : lanes,
+    // }
     
     let race = {
         'meet' : $("#meet_id").val(),
@@ -186,23 +195,45 @@ timing.prototype.saveTimes = function() {
         // 'final': getTime(this.time),
         // 'splits': this.splitNBR.textContent,
                 }
-    
 
-$('#timer_form').submit(function (e) {
-    $.ajax({
-        type: 'POST',
-        url: '/time',
-        data: race,
-        success: function(response) {
-            console.log(response);
-        },
-        error: function(error) {
-            console.log("error");
-        }
+    $('#timer_form').submit(function (e) {
+        $.ajax({
+            type: 'POST',
+            url: '/time',
+            
+            data: race,
+            success: function(response) {
+                console.log(response);
+            },
+            error: function(error) {
+                console.log("error");
+            }
+        });
+        e.preventDefault(); 
+        return true
     });
-    e.preventDefault(); 
-    return true
-});
+    
     $('#saveNotice').removeClass('save')
+    console.log(race)
     return true
 };
+
+
+function getLane(laneNum) {
+    laneNum = String(laneNum);
+    let lane = {
+        "id": $("#lanes" + laneNum).val(),
+        "final": $("#timerNumber" + laneNum).text(),
+        "split": $("#splitNumber" + laneNum).text(),
+        }
+        
+    return lane;
+}
+
+function getLanesList() {
+    let lanes = []
+    for(let i = 0; i < 3; i++) {
+        lanes.push(getLane(i + 1))
+    }
+    return lanes;
+}
