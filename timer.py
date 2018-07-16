@@ -26,10 +26,12 @@ def get_user_page(sport, team, username, meet):
 
 @app.route('/<sport>/<team>/<username>/<meet>/new', methods = ['POST'])
 def timer_setup(sport, team, username, meet):
+    meet = request.form['meet']
     event_name = request.form['event']
     heat_num = request.form['heat']
     event = "Event: " + event_name
     heat = "Heat: " + heat_num
+    
     return redirect("/" + sport + "/" + team + "/" + username + "/" + meet + '/' + event + "/" + heat)
 
 @app.route('/<sport>/<team>/<username>/<meet>/<event>/<heat>')
@@ -38,7 +40,6 @@ def timer_set(sport, team, username, meet, event, heat):
 
 @app.route('/time', methods = ['POST'])
 def time():
-    
     meet = request.form['meet']
     event = request.form['event']
     heat = request.form['heat']
@@ -58,6 +59,7 @@ def time():
     splits_three = [split_three[i:i+n] for i in range(0, len(split_three), n)]
     
     meet_data = {
+        'meet': meet,
     	"event": event,
     	"heat": heat,
     	"lanes": {
@@ -76,14 +78,35 @@ def time():
     	}
     }
     
-    print(meet_data)
-    
     with MongoClient(MONGODB_URI) as conn: 
         db = conn[MONGODB_NAME]
         coll = db['final-times']
         coll.insert(meet_data)
         
     return "0"
+    
+@app.route('/<sport>/<team>/<username>/<meet>/view', methods = ['POST'])
+def view_times(sport, team, username, meet):
+    meet = request.form['meet']
+    event_name = request.form['event']
+    heat_num = request.form['heat']
+    
+    meet_data = get_times()
+    show_times = []
+    
+    for times in meet_data: 
+        if meet in times:
+            show_times.append(times)
+    
+    return render_template('timer_page.html', username = username, team = team, sport = sport, meet = meet, event = event_name, heat = heat_num, show_times=show_times)
+            
+    
+def get_times():
+     with MongoClient(MONGODB_URI) as conn:
+        db = conn[MONGODB_NAME]
+        coll = db["final-times"]
+        all_times = coll.find()
+        return all_times
     
 if __name__ == '__main__':
     app.run(host=os.getenv('IP'), port=int(os.getenv('PORT')), debug = True)

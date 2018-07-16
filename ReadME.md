@@ -12,6 +12,8 @@ Save Button to pass values to Flask and into MongoDB were added using Ajax.
 
 
 EXPLAIN WHY THIS DOESN'T/WOULDN'T WORK
+
+
 var stopwatches = [];
     var i; 
     for (i=0; i<=1; i++) {

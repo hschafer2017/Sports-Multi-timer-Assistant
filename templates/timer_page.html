@@ -15,6 +15,9 @@
 </head>
 
 <body>
+    
+    <!--TOP HALF-->
+    
     <div class="background">
         <div class="container">
             <div class="row">
@@ -66,13 +69,13 @@
         </select>
                                 </div>
                                 <br>
-
+<input type="hidden" name="meet" id="meet_id" value="{{meet}}">
                                 <input type="submit" id='submit' class='btn btn-default' value="Submit" />
                             </form>
                         </div>
-
+<!--TOP HALF - RIGHT SIDE -->
                         <form action="/time" method='POST' id='timer_form'>
-                            <div class="col-xs-9 col-sm-9 events" align='center'>
+                            <div class="col-xs-9 col-sm-9 events">
                                 <br>
                                 <br>
                                 <br>
@@ -94,6 +97,9 @@
         <br>
         <br>
     </div>
+    
+    <!--BOTTOM HALF-->
+    
     <div class="container">
         <br>
         <input type="hidden" name="meet" id="meet_id" value="{{meet}}">
@@ -198,6 +204,15 @@
 
         <div class="container">
             <h4 id="saveNotice" class="save">Your times have been saved!</h4>
+        </div>
+        <div class="container">
+            <form action="/{{sport}}/{{team}}/{{username}}/{{meet}}/view" method="POST">
+                <input type="hidden" name="meet" id="meet_id" value="{{meet}}">
+                <input type="hidden" name="heat" id="meet_id" value="{{heat}}">
+                <input type="hidden" name="event" id="meet_id" value="{{event}}">
+                <button type="submit" class="btn btn-primary">View Times</button>
+            </form>
+            <p>{{show_times}}</p>
         </div>
     </div>
 
