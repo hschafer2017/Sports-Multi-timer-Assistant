@@ -95,9 +95,7 @@ def view_times(sport, team, username, meet):
     show_times = []
     
     for times in meet_data:
-        # if meet in times:
         show_times.append(times)
-    print(times['lanes'])
     return render_template('timer_page.html', username = username, team = team, sport = sport, meet = meet, event = event_name, heat = heat_num, show_times=show_times)
             
     

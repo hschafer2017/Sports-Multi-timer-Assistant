@@ -195,38 +195,69 @@
                     </div>
                 </div>
                 <br>
-                <button type="submit" id='saveTimes' name='time' class="btn btn-primary">Save Times</button>
-                </form>
+                
+                
             </div>
 
         </div>
         <br>
 
         <div class="container">
+            <div class="row">
+            <div class="col-xs-hidden col-sm-6">
+                <button type="submit" id='saveTimes' name='time' class="btn btn-primary">Save Times</button>
+                </form>
             <h4 id="saveNotice" class="save">Your times have been saved!</h4>
         </div>
-        <div class="container">
+        
+        <div class="col-xs-hidden col-sm-6">
             <form action="/{{sport}}/{{team}}/{{username}}/{{meet}}/view" method="POST">
                 <input type="hidden" name="meet" id="meet_id" value="{{meet}}">
                 <input type="hidden" name="heat" id="meet_id" value="{{heat}}">
                 <input type="hidden" name="event" id="meet_id" value="{{event}}">
                 <button type="submit" class="btn btn-primary">View Times</button>
             </form>
+            </div>
+            </div>
+            </div>
+            <div class="container">
             <div class="view-times">
-
-
-
-
+                <h3><strong>Meet: {{meet}}</strong></h3>
+                <br>
                 {%- for time in show_times recursive %}
-                <li>{{ time.event }}</li>
-                <li>{{ time.heat }}</li>
+                
+                <h4 class = 'event'><strong>{{ time.event }}</strong></h4>
+                <h5 class = 'heats'>{{ time.heat }}</h5>
+                <br>
+                <div class="container">
+                    <div class="row">
                 {%- if time.lanes -%} 
                 {%- for lane in time.lanes %}
-                <ul>{{ lane }} {{ time.lanes[lane].final }}
-                {%- for t in time.lanes[lane].splits %} {{ t }} 
-                {%- endfor %}</ul>
+                
+                        <div class="col-xs-hidden col-sm-4">
+                <p><strong>Lane: {{ lane }}</strong></p> 
+                <ul>
+                <p><strong>Final:  {{ time.lanes[lane].final }}</strong></p>
+                
+                <p>Splits:</p>
+                <div id='split-render'>
+                <ol>
+                {%- for t in time.lanes[lane].splits %} 
+                <li>{{ t }}</li>
+                
+                {%- endfor %}
+                </ol>
+                </div>
+                </ul>
+                <br>
+                </div>
+                
                 {%- endfor %} 
-                {%- endif %} 
+                
+                {%- endif %}
+                </div>
+                </div>
+                <hr>
                 {%- endfor %}
 
 

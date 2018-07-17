@@ -143,6 +143,29 @@ ol {
 
 /*--------------------VIEW TIMES--------------------*/
 .view-times {
-    color: #696969;
+    color: #424242;
     text-align: left;
+    font-size: 20px;
+}
+.event {
+    font-size: 26px;
+}
+.heats {
+    text-align: left;
+    font-size: 22px;
+}
+#split-render li {
+    color: #424242;
+    font-size: 20px;
+    font-weight: lighter;
+    text-align: left;
+    background: #424242;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    
+    
+}
+hr {
+    color: #696969;
+    border-top: 1px solid #696969
 }
