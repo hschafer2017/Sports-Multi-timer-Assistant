@@ -15,9 +15,9 @@
 </head>
 
 <body>
-    
+
     <!--TOP HALF-->
-    
+
     <div class="background">
         <div class="container">
             <div class="row">
@@ -42,7 +42,7 @@
                             <form action="/{{sport}}/{{team}}/{{username}}/{{meet}}/new" method="POST">
                                 <div class="row">
 
-                                    
+
 
                                     <select name="event" class="form-control input-sm">
                                         <option value="">Select Event</option>
@@ -55,7 +55,7 @@
                                 </div>
                                 <br>
                                 <div class="row">
-                                    
+
 
                                     <select name="heat" class="form-control input-sm">
                                         <option value="">Select Heat</option>
@@ -69,11 +69,11 @@
         </select>
                                 </div>
                                 <br>
-<input type="hidden" name="meet" id="meet_id" value="{{meet}}">
+                                <input type="hidden" name="meet" id="meet_id" value="{{meet}}">
                                 <input type="submit" id='submit' class='btn btn-default' value="Submit" />
                             </form>
                         </div>
-<!--TOP HALF - RIGHT SIDE -->
+                        <!--TOP HALF - RIGHT SIDE -->
                         <form action="/time" method='POST' id='timer_form'>
                             <div class="col-xs-9 col-sm-9 events">
                                 <br>
@@ -97,9 +97,9 @@
         <br>
         <br>
     </div>
-    
+
     <!--BOTTOM HALF-->
-    
+
     <div class="container">
         <br>
         <input type="hidden" name="meet" id="meet_id" value="{{meet}}">
@@ -141,7 +141,7 @@
 
                     <div class="col-xs-hidden col-sm-hidden col-md-4 watch">
                         <br>
-                        <h3 id="timerNumber2" class ='times'>00:00.00</h3>
+                        <h3 id="timerNumber2" class='times'>00:00.00</h3>
                         <h4>
                             <div id='splitNumber2'> </div>
                         </h4>
@@ -168,7 +168,7 @@
                     </div>
                     <div class="col-xs-hidden col-sm-hidden col-md-4 watch">
                         <br>
-                        <h3 id="timerNumber3" class ='times'>00:00.00</h3>
+                        <h3 id="timerNumber3" class='times'>00:00.00</h3>
                         <h4>
                             <div id='splitNumber3'> </div>
                         </h4>
@@ -212,7 +212,27 @@
                 <input type="hidden" name="event" id="meet_id" value="{{event}}">
                 <button type="submit" class="btn btn-primary">View Times</button>
             </form>
-            <p>{{show_times}}</p>
+            <div class="view-times">
+
+
+
+
+                {%- for time in show_times recursive %}
+                <li>{{ time.event }}</li>
+                <li>{{ time.heat }}</li>
+                {%- if time.lanes -%} 
+                {%- for lane in time.lanes %}
+                <ul>{{ lane }} {{ time.lanes[lane].final }}
+                {%- for t in time.lanes[lane].splits %} {{ t }} 
+                {%- endfor %}</ul>
+                {%- endfor %} 
+                {%- endif %} 
+                {%- endfor %}
+
+
+
+
+            </div>
         </div>
     </div>
 

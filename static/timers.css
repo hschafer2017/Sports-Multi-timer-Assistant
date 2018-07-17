@@ -140,3 +140,9 @@ ol {
     background: linear-gradient(to top right, #0000FF, #1E90FF);
     border-color: grey;
 }
+
+/*--------------------VIEW TIMES--------------------*/
+.view-times {
+    color: #696969;
+    text-align: left;
+}
