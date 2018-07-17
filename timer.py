@@ -40,6 +40,8 @@ def timer_set(sport, team, username, meet, event, heat):
 
 @app.route('/time', methods = ['POST'])
 def time():
+    team = request.form['team']
+    username = request.form['username']
     meet = request.form['meet']
     event = request.form['event']
     heat = request.form['heat']
@@ -59,6 +61,8 @@ def time():
     splits_three = [split_three[i:i+n] for i in range(0, len(split_three), n)]
     
     meet_data = {
+        'team': team,
+        'username': username,
         'meet': meet,
     	"event": event,
     	"heat": heat,

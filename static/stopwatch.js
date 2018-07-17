@@ -180,6 +180,8 @@ timing.prototype.saveTimes = function() {
     // }
     
     let race = {
+        'team' : $("#team_id").val(),
+        'username' : $("#username_id").val(),
         'meet' : $("#meet_id").val(),
         'event': $("#event_id").val(),
         'heat' : $("#heat_id").val(), 
