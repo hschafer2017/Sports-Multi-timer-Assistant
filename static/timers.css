@@ -19,6 +19,7 @@ form {
 }
 h2 {
     text-align: left;
+    padding-left: 12px;
 }
 
 h4 {
@@ -83,6 +84,7 @@ ol {
 
 .form {
     text-align: left;
+    margin-top: 34px;
 }
 
 .lanes {

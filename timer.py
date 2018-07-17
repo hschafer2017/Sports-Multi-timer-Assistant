@@ -96,7 +96,7 @@ def view_times(sport, team, username, meet):
     
     for times in meet_data:
         show_times.append(times)
-    return render_template('timer_page.html', username = username, team = team, sport = sport, meet = meet, event = event_name, heat = heat_num, show_times=show_times)
+    return render_template('timer_page.html', username = username, team = team, sport = sport, meet = meet, event = event_name, heat = heat_num, show_times=show_times, meets=meet)
             
     
 def get_times():
