@@ -5,11 +5,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link href="https://stackpath.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-    <script type="text/javascript" src="https://code.jquery.com/jquery.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/hover.css/2.1.1/css/hover-min.css" type="text/css" />
-    <link href="https://fonts.googleapis.com/css?family=Karla|Nanum+Gothic" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for ('static', filename = 'bootstrap.min.css')}}" type="text/css" />
+    <script src="{{url_for('static', filename='jquery.min.js')}}"></script>
+    <script src="{{url_for('static', filename='bootstrap.min.js')}}"></script>
+    <link rel="stylesheet" href="{{ url_for ('static', filename = 'hover-min.css')}}" type="text/css" />
+    <link href="https://fonts.googleapis.com/css?family=Karla|Nanum+Gothic" rel="stylesheet"/>
     <link rel="stylesheet" href="{{ url_for ('static', filename = 'timers.css')}}" type="text/css" />
     <title> Timing Assistant</title>
 </head>
@@ -138,14 +138,14 @@
 
         <div class="timer">
 
-            <h1><time id='timerMain'>00:00:00</time></h1>
+            <h1><time id='timerMain'>00:00.00</time></h1>
             <input type="button" value="START" id="moveAllBtn" class="btn btn-success" />
             <input type='button' value='RESET' id="resetAllBtn" class="btn btn-info" />
             <div class="container">
                 <div class="row">
                     <div class="col-xs-hidden col-sm-hidden col-md-4 watch">
                         <br>
-                        <h3 id='timerNumber1' class="LN1 times">00:00:00</h4>
+                        <h3 id='timerNumber1' class="LN1 times">00:00.00</h4>
                             <h4>
                                 <div id="splitNumber1"> </div>
                             </h4>
