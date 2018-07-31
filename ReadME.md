@@ -11,7 +11,6 @@ A live demo of this project can be found at https://timing-assistant.herokuapp.c
 
 # Technologies
 
-
 1. Flask Microframework (Python)
 2. Javascript 
 3. jQuery
