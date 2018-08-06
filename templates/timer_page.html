@@ -19,7 +19,7 @@
     <!--TOP HALF-->
 
     <div class="background">
-        <div class="container">
+        <div class="container" style='padding-left: 25px;'>
             <div class="row">
                 <h2>Timing Assistant</h2>
             </div>
@@ -96,7 +96,7 @@
                                 </div>
                                 <br>
                                 <input type="hidden" name="meet" id="meet_id" value="{{meet}}">
-                                <input type="submit" id='submit' class='btn-sm btn-default' value="Submit" />
+                                <input type="submit" id='submit' class=' btn-sm btn-default' value="Submit" />
                             </form>
                         </div>
                         
@@ -187,7 +187,7 @@
 
                             <select id="lanes2" class="form-control input-sm">
             <option value="1">1</option>
-            <option value="2">2</option>
+            <option value="2" selected="selected">2</option>
             <option value="3">3</option>
             <option value="4">4</option>
             <option value="5">5</option>
@@ -213,9 +213,9 @@
                             <p>Lane Number: </p>
 
                             <select id="lanes3" class="form-control input-sm">
-            <option value="1">1</option>
+            <option value="1" >1</option>
             <option value="2">2</option>
-            <option value="3">3</option>
+            <option value="3" selected="selected">3</option>
             <option value="4">4</option>
             <option value="5">5</option>
             <option value="6">6</option>
@@ -236,20 +236,20 @@
 
         <div class="container">
             <div class="row">
-            <div class="col-xs-hidden col-sm-6">
+            <div class="col-xs-6 col-sm-6">
                 <button type="submit" id='saveTimes' name='time' class="btn btn-primary">Save Times</button>
                 </form>
             <h4 id="saveNotice" class="save">Your times have been saved!</h4>
         </div>
         
-        <div class="col-xs-hidden col-sm-6">
+        <div class="col-xs-6 col-sm-6">
             <form action="/{{sport}}/{{team}}/{{username}}/{{meet}}/view" method="POST">
                 <input type="hidden" name="team" id="team_id" value="{{team}}">
                 <input type="hidden" name="username" id="username_id" value="{{username}}">
                 <input type="hidden" name="meet" id="meet_id" value="{{meet}}">
                 <input type="hidden" name="heat" id="heat_id" value="{{heat}}">
                 <input type="hidden" name="event" id="event_id" value="{{event}}">
-                <button type="submit" class="btn btn-primary">View Times</button>
+                <button type="submit" class="btn btn-danger">View Times</button>
             </form>
             </div>
             </div>

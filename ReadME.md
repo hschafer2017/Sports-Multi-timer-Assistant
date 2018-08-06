@@ -1,13 +1,13 @@
 # Timing Assistant
 
 Stream Three Project: Data Centric Development - Code Institute 
-This project was built using the Flask Microframework, and it could be used as a manual stopwatch to time multiple athletes in swimming and track. 
+This project was built using the Flask Microframework, and it could be used as a manual stopwatch to time multiple athletes in swimming and track. The goal of this application is to improve efficency in sports timing by decreasing the number of people timing seperately and directly storing the times, as opposed to keeping a written documentation.  
 
-THIS APPLICATION IS FOR EDUCATIONAL USE ONLY. THIS APPLICATION IS NOT FOR COMMERCIAL USE. 
+**THIS APPLICATION IS FOR EDUCATIONAL USE ONLY. THIS APPLICATION IS NOT FOR COMMERCIAL USE.**
 
 # Live Demo 
 
-A live demo of this project can be found at https://timing-assistant.herokuapp.com/
+A live demo of this project can be found at [here](https://timing-assistant.herokuapp.com/).
 
 # Technologies
 
@@ -43,7 +43,7 @@ Save Button to pass values to Flask and into MongoDB were added using Ajax.
 
 EXPLAIN WHY THIS DOESN'T/WOULDN'T WORK
 
-
+```javascript
 var stopwatches = [];
     var i; 
     for (i=0; i<=1; i++) {
@@ -63,10 +63,11 @@ var stopwatches = [];
         }
         console.log(stopwatches)
     }
-    
+ ```   
     
 This does work: 
 
+```javascript
     document.getElementById("reset" + i).onclick = function() {
         stopwatches[0].reset();
     }
@@ -74,9 +75,11 @@ This does work:
     document.getElementById("split" + i).onclick = function() {
         stopwatches[0].split();
     }
+```
 
 Attempted to pass the i through a function instead, but was unsuccessful: 
 
+```javascript
 function choose_stopwatch(i) {
     if (i == 1) {
         stopwatches_one.start
@@ -85,7 +88,8 @@ function choose_stopwatch(i) {
         stopwatches_one.start()
         stopwatches_two.start()
     } else {
-        console.log('fail')
+        console.log('else')
     }
     
 }
+```

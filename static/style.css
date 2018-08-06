@@ -1,16 +1,17 @@
 body,
 html {
     height: 100%;
-}
-
-.background {
     background: linear-gradient(to top right, #00AAE4, #00BF76);
     height: 100%;
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
-    color: black;
+    color: #333;
     font-family: 'Karla', sans-serif;
+}
+
+.background {
+    
 }
 .title {
     color: white;
@@ -28,3 +29,6 @@ html {
     left: 50%;
 }
 
+.btn-sm {
+   border-radius: 2px; 
+}

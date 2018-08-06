@@ -3,6 +3,7 @@ body {
     text-align: center;
     font-family: 'Karla', sans-serif;
 }
+
 .background {
     background: linear-gradient(to top right, #00AAE4, #00BF76);
     color: white;
@@ -11,19 +12,22 @@ body {
 .welcome {
     text-align: left;
 }
+
 .main {
     text-align: center;
 }
+
 form {
-    text-align:center;
+    text-align: center;
 }
+
 h2 {
     text-align: left;
     padding-left: 12px;
 }
 
 h4 {
-   text-align: left; 
+    text-align: left;
 }
 
 h5 {
@@ -37,22 +41,23 @@ h5 {
     text-align: center;
     vertical-align: middle;
     /*font-size: 72px;*/
-    
     color: #00B5B1;
 }
+
 #timerMain {
-    font-size: 80px;
+    font-size: 75px;
     font-weight: 700;
     background: -webkit-linear-gradient(#00AAE4, #00BF76);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
 }
+
 .times {
     font-size: 60px;
     font-weight: 600;
     background: -webkit-linear-gradient(#00AAE4, #00BF76);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
 }
 
 .watch {
@@ -65,8 +70,8 @@ ol {
     text-align: center;
     font-size: 26px;
     background: -webkit-linear-gradient(#00AAE4, #00BF76);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
     font-weight: bolder;
 }
 
@@ -102,60 +107,74 @@ ol {
 
 /*-------------------------BUTTONS-------------------------*/
 
+.btn {
+    border: 0px;
+    border-radius: 2px;
+    box-shadow: 0px 0px 25px #d3d3d3;
+    color: white;
+}
+
+.btn-sm {
+    border-radius: 2px;
+}
+
 .btn-success {
-    color: white;
     background: linear-gradient(to top right, #00AAE4, #00BF76);
-    border-color: grey;
 }
+
 .btn-success:active {
-    color: white;
     background: linear-gradient(to top right, #00AAE4, #00BF76);
-    border-color: grey;
 }
+
 .btn-warning {
-    color: white;
     background: linear-gradient(to top right, #FF006E, #FF3B0F);
-    border-color: grey;
 }
+
 .btn-warning:active {
-    color: white;
     background: linear-gradient(to top right, #FF006E, #FF3B0F);
-    border-color: grey;
 }
+
 .btn-info {
-    color: white;
     background: linear-gradient(to top right, #663399, #6A5ACD);
-    border-color: grey;
 }
+
 .btn-info:active {
-    color: white;
     background: linear-gradient(to top right, #663399, #6A5ACD);
-    border-color: grey;
 }
+
 .btn-primary {
-    color: white;
     background: linear-gradient(to top right, #0000FF, #1E90FF);
-    border-color: grey;
 }
+
 .btn-primary:active {
-    color: white;
     background: linear-gradient(to top right, #0000FF, #1E90FF);
-    border-color: grey;
+}
+
+.btn-danger {
+    background: linear-gradient(to top right, #56ab2f, #a8e063);
+}
+
+.btn-danger:active {
+    background: linear-gradient(to top right, #56ab2f, #a8e063);
 }
 
 /*--------------------VIEW TIMES--------------------*/
+
 .view-times {
     color: #424242;
     text-align: left;
     font-size: 20px;
 }
+
 .event {
     font-size: 26px;
 }
+
 .heats {
     text-align: left;
     font-size: 22px;
 }
+
 #split-render li {
     color: #424242;
     font-size: 20px;
@@ -164,10 +183,17 @@ ol {
     background: #424242;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    
-    
+
+
 }
+
 hr {
     color: #696969;
     border-top: 1px solid #696969
+}
+
+@media (min-width: 768px) {
+    .container {
+    width: inherit;
+}
 }
