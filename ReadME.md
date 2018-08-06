@@ -5,7 +5,7 @@ This project was built using the Flask Microframework, and it could be used as a
 
 **THIS APPLICATION IS FOR EDUCATIONAL USE ONLY. THIS APPLICATION IS NOT FOR COMMERCIAL USE.**
 
-![Responsive Demo](https://raw.githubusercontent.com/hschafer2017/Sports-Multi-timer-Assistant/master/TiminDesign.gif "Responsive Demo")
+![Responsive Demo](https://raw.githubusercontent.com/hschafer2017/Sports-Multi-timer-Assistant/master/TimingDesign.gif "Responsive Demo")
 
 # Live Demo 
 
