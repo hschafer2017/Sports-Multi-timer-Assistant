@@ -170,15 +170,6 @@ stopwatch_setup();
 
 timing.prototype.saveTimes = function() {
     
-    // let lanes = getLanesList();
-    
-    // let race = {
-    //     'meet' : $("#meet_id").val(),
-    //     'event': $("#event_id").val(),
-    //     'heat' : $("#heat_id").val(),
-    //     'lanes' : lanes,
-    // }
-    
     let race = {
         'team' : $("#team_id").val(),
         'username' : $("#username_id").val(),
@@ -238,4 +229,10 @@ function getLanesList() {
         lanes.push(getLane(i + 1))
     }
     return lanes;
+}
+
+// Modal for mobile 
+function loadModal() {
+    $('#rotateScreenModal').modal('show');
+
 }

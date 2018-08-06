@@ -14,7 +14,7 @@
     <title> Timing Assistant</title>
 </head>
 
-<body>
+<body onload='loadModal()'>
 
     <!--TOP HALF-->
 
@@ -143,7 +143,7 @@
             <input type='button' value='RESET' id="resetAllBtn" class="btn btn-info" />
             <div class="container">
                 <div class="row">
-                    <div class="col-xs-hidden col-sm-hidden col-md-4 watch">
+                    <div class="col-xs-hidden col-sm-4 col-md-4 watch">
                         <br>
                         <h3 id='timerNumber1' class="LN1 times">00:00.00</h4>
                             <h4>
@@ -171,7 +171,7 @@
                             </div>
                     </div>
 
-                    <div class="col-xs-hidden col-sm-hidden col-md-4 watch">
+                    <div class="col-xs-hidden col-sm-4 col-md-4 watch">
                         <br>
                         <h3 id="timerNumber2" class='times'>00:00.00</h3>
                         <h4>
@@ -198,7 +198,7 @@
 
                         </div>
                     </div>
-                    <div class="col-xs-hidden col-sm-hidden col-md-4 watch">
+                    <div class="col-xs-hidden col-sm-4 col-md-4 watch">
                         <br>
                         <h3 id="timerNumber3" class='times'>00:00.00</h3>
                         <h4>
@@ -312,6 +312,23 @@
 
             </div>
         </div>
+    <!--SCREEN ROTATE MODAL-->
+        <div class="modal fade hidden-md hidden-lg" tabindex="-1" role="dialog" id='rotateScreenModal'>
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" style='text-align: right;' aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title">Get Ready to Time!</h4>
+                </div>
+                <div class="modal-body">
+                    <p class='rotate'><strong>Turn your device sideways for a better timing experience!</strong></p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-success modal-btn" data-dismiss="modal">Got It!</button>
+                </div>
+            </div>
+        </div>
+    </div>
     </div>
 
 
