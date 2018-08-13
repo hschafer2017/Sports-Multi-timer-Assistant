@@ -1,6 +1,6 @@
 # Timing Assistant
 
-Stream Three Project: Data Centric Development - Code Institute 
+Stream Three Project: Data Centric Development - Code Institute.  
 This project was built using the Flask Microframework, and it could be used as a manual stopwatch to time multiple athletes in swimming and track. The goal of this application is to improve efficency in sports timing by decreasing the number of people timing seperately and directly storing the times, as opposed to keeping a written documentation.  
 
 **THIS APPLICATION IS FOR EDUCATIONAL USE ONLY. THIS APPLICATION IS NOT FOR COMMERCIAL USE.**
@@ -9,7 +9,7 @@ This project was built using the Flask Microframework, and it could be used as a
 
 # Live Demo 
 
-A live demo of this project can be found at [here](https://timing-assistant.herokuapp.com/).
+A live demo of this project can be found [here](https://timing-assistant.herokuapp.com/). This app is hosted on Heroku. 
 
 # Technologies
 
@@ -60,7 +60,6 @@ During the testing process, I realized that it would be possible for two users t
 {% if time.username == username %}
 {% if time.meet == meets %}
 ```
-
 
 # Credits
 
@@ -128,3 +127,15 @@ function choose_stopwatch(i) {
     
 }
 ```
+
+# Installation 
+If you're interested in cloning this repository, to set up and install everything in the requirements.txt run the following command in the terminal: 
+```
+$ sudo pip3 -r install requirements.txt
+```
+Then, detatch from my repository using the following command: 
+```
+$ git remote rm origin
+```
+
+Please note that I used Cloud9 for this project, so if you are using a different editor, the terminal commands may differ. Please consult the docs for the editor you're using for further information on editor-specific terminal commands. All secret keys for MongoDB will need to be obtained individually, as they are hidden. 
