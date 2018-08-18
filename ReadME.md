@@ -50,6 +50,18 @@ I would also like to allow the coach to select the number of stopwatches they wa
 # Testing 
 All testing for this project was done manually. The Ajax function and Save Times button were tested via the console and verifying that the data had appeared correctly formatted in MongoDB. The data collected from the timers and the indended data structure were also tested. 
 
+Times saving individually with one document per lane. 
+
+![MongoDB Initial Data Display](ReadMe images/Saving_Individually_MongoDB.png "Times Saving Initially to MongoDB.")
+
+Times for lanes displaying in the same document. (note: for testing purposes, only two lanes were saved here to make sure that two would show up in the same document.)
+
+![Displaying Together in MongoDB](ReadMe images/Saving_Together_MongoDB.png "All Times Saving Together.")
+
+Correct Data Structure 
+
+![Correct Data Structure in MongoDB](ReadMe images/Saving_Correctly_MongoDB.png "Correct Data Structure.")
+
 Testing for the stopwatches was done manually as well to make sure that the main reset button reset the stopwatch and cleared the splits from all timers, while each individual stopwatch only cleared its own time and splits. Furthermore, this was also tested for the start/stop function, as the main stopwatch controls all stopwatches, while the individual ones should only control their own start/stop functions. 
 
 All Flask paths were also tested to make sure that all links worked and that it could handle any uncommon values in the input, and it would display inputs properly via Jinja in the HTML file. 
@@ -63,13 +75,13 @@ During the testing process, I realized that it would be possible for two users t
 
 # Credits
 
-The Javascript function running the stopwatch is modified from Coding with Sara's stopwatch [tutorial](https://codingwithsara.com/the-multiple-stopwatches-on-one-page-in-javascript-for-intermediates/) for this application. 
+The Javascript function running the stopwatch is modified from Coding with Sara's stopwatch [tutorial](https://codingwithsara.com/the-multiple-stopwatches-on-one-page-in-javascript-for-intermediates/) for this application. Some HTML was also modeled after her example, but modified to fit styling, multiple buttons, splits, and lanes. 
 Reset functions were modified for the reset button to reset all stopwatches instead of refreshing the page. 
 Split functions were also added. 
 Start/Stop functions were modified for a style change in buttons using jQuery. 
 Save Button to pass values to Flask and into MongoDB were added using Ajax. 
 
-The Ajax function was modeled after this [post](https://stackoverflow.com/questions/37631388/how-to-get-data-in-flask-from-ajax-post) from Stack Overflow and modified to fit this project by looking at patterns of other Ajax uses and syntax. 
+The Ajax function was modeled after this [post](https://stackoverflow.com/questions/37631388/how-to-get-data-in-flask-from-ajax-post) from Stack Overflow and modified to fit this project by looking at patterns of other Ajax uses and syntax. A prevent default was added to prevent the page from reloading when the AJAX call is made. 
 
 # Refactoring
 
@@ -81,7 +93,7 @@ var stopwatches = [];
     for (i=0; i<=1; i++) {
         var stopwatch = new timing("timerLabel" + i, "start" + i, "splitLabel" + i);
         stopwatches.push(stopwatch);
-        console.log(i)
+        console.log(i);
         document.getElementById("start" + i).onclick = function() {
             stopwatches[i].start();
         }
@@ -93,7 +105,7 @@ var stopwatches = [];
         document.getElementById("split" + i).onclick = function() {
             stopwatches[i].split();
         }
-        console.log(stopwatches)
+        console.log(stopwatches);
     }
  ```   
 
@@ -114,17 +126,16 @@ I tried to approach it a different way, which involved if statements to get the 
 Attempted to pass the i through a function instead as an arguement taken from the for loop above, but was unsuccessful: 
 
 ```javascript
-function choose_stopwatch(i) {
+function chooseNumberOfStopwatches(i) {
     if (i == 1) {
-        stopwatches_one.start
+        stopwatches_one.start();
     } 
     else if (i == 2) {
-        stopwatches_one.start()
-        stopwatches_two.start()
+        stopwatches_one.start();
+        stopwatches_two.start();
     } else {
-        console.log('else')
+        console.log('else');
     }
-    
 }
 ```
 
@@ -132,10 +143,6 @@ function choose_stopwatch(i) {
 If you're interested in cloning this repository, to set up and install everything in the requirements.txt run the following command in the terminal: 
 ```
 $ sudo pip3 -r install requirements.txt
-```
-Then, detatch from my repository using the following command: 
-```
-$ git remote rm origin
 ```
 
 Please note that I used Cloud9 for this project, so if you are using a different editor, the terminal commands may differ. Please consult the docs for the editor you're using for further information on editor-specific terminal commands. All secret keys for MongoDB will need to be obtained individually, as they are hidden. 

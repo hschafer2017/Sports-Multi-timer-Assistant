@@ -1,5 +1,4 @@
 body {
-    /*background-color: white;*/
     text-align: center;
     font-family: 'Karla', sans-serif;
 }
@@ -183,8 +182,6 @@ ol {
     background: #424242;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-
-
 }
 
 hr {
@@ -194,6 +191,6 @@ hr {
 
 @media (min-width: 768px) {
     .container {
-    width: inherit;
-}
+        width: inherit;
+    }
 }

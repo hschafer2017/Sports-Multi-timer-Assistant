@@ -2,10 +2,11 @@ let numLanes = 3;
 
 function stopwatch_setup() {
     // Main Stopwatch: 
-    var stopwatch_main = new timing("timerMain", "moveAllBtn");
+    let stopwatch_main =
+        new timing("timerMain", "moveAllBtn");
     document.getElementById("moveAllBtn").onclick = function() {
 
-        if (document.getElementById("moveAllBtn").value == 'START') {
+        if (document.getElementById("moveAllBtn").value == "START") {
             stopwatch_main.status = 0;
             stopwatches_one.status = 0;
             stopwatches_two.status = 0;
@@ -34,12 +35,12 @@ function stopwatch_setup() {
     // Save Times Button 
     document.getElementById("saveTimes").onclick = function() {
         stopwatches_one.saveTimes();
-        // stopwatches_two.saveTimes();
-        // stopwatches_three.saveTimes();
+
     };
 
     // Stopwatch One 
-    var stopwatches_one = new timing("timerNumber1", "start1", "splitNumber1");
+    let stopwatches_one =
+        new timing("timerNumber1", "start1", "splitNumber1");
     document.getElementById("start1").onclick = function() {
         stopwatches_one.start();
 
@@ -53,7 +54,8 @@ function stopwatch_setup() {
     };
 
     // Stopwatch Two 
-    var stopwatches_two = new timing("timerNumber2", "start2", "splitNumber2");
+    let stopwatches_two =
+        new timing("timerNumber2", "start2", "splitNumber2");
     document.getElementById("start2").onclick = function() {
         stopwatches_two.start();
     };
@@ -65,7 +67,8 @@ function stopwatch_setup() {
     };
 
     // Stopwatch Three  
-    var stopwatches_three = new timing("timerNumber3", "start3", "splitNumber3");
+    let stopwatches_three =
+        new timing("timerNumber3", "start3", "splitNumber3");
     document.getElementById("start3").onclick = function() {
         stopwatches_three.start();
     };
@@ -89,7 +92,7 @@ function timing(timerNumber, startNumber, splitNumber) {
 
 // Split Function
 timing.prototype.split = function() {
-    let textSplit = document.createElement('ol');
+    let textSplit = document.createElement("ol");
     textSplit.append(this.timerNBR.innerHTML = getTime(this.time));
     this.splitNBR.appendChild(textSplit);
 
@@ -108,23 +111,23 @@ timing.prototype.start = function() {
         this.startBTN.value = "START";
 
     }
-    $('#saveNotice').addClass('save')
+    $("#saveNotice").addClass("save");
 };
 
 //  Counts the stopwatch increments, both main and individual
 timing.prototype.count = function() {
     if (this.status == 1) {
-        var that = this;
+        let that = this;
         setTimeout(function() {
             that.time++;
             that.timerNBR.innerHTML = getTime(that.time);
             that.count();
         }, 10);
-        document.getElementById("moveAllBtn").value = 'STOP';
+        document.getElementById("moveAllBtn").value = "STOP";
 
     }
     else {
-        document.getElementById("moveAllBtn").value = 'START';
+        document.getElementById("moveAllBtn").value = "START";
     }
 };
 
@@ -134,17 +137,17 @@ timing.prototype.reset = function() {
     this.time = 0;
     this.startBTN.value = "START";
     this.timerNBR.innerHTML = "00:00.00";
-    $(this.splitNBR).find('ol').html("")
-    $('#saveNotice').addClass('save')
+    $(this.splitNBR).find("ol").html("");
+    $("#saveNotice").addClass("save");
 
 };
 
 
 function getTime(time) {
 
-    var min = Math.floor(time / 100 / 60);
-    var sec = Math.floor(time / 100);
-    var mSec = (time % 100);
+    let min = Math.floor(time / 100 / 60);
+    let sec = Math.floor(time / 100);
+    let mSec = (time % 100);
 
     if (min < 10) {
         min = "0" + min;
@@ -169,31 +172,29 @@ stopwatch_setup();
 
 
 timing.prototype.saveTimes = function() {
-    
-    let race = {
-        'team' : $("#team_id").val(),
-        'username' : $("#username_id").val(),
-        'meet' : $("#meet_id").val(),
-        'event': $("#event_id").val(),
-        'heat' : $("#heat_id").val(), 
-        'lanes1' : $("#lanes1").val(),
-        'lanes2' : $("#lanes2").val(),
-        'lanes3' : $("#lanes3").val(),
-        'final1' : $("#timerNumber1").text(),
-        'final2' : $("#timerNumber2").text(),
-        'final3' : $("#timerNumber3").text(),
-        'split1' : $("#splitNumber1").text(),
-        'split2' : $("#splitNumber2").text(),
-        'split3' : $("#splitNumber3").text(),
-        // 'final': getTime(this.time),
-        // 'splits': this.splitNBR.textContent,
-                }
 
-    $('#timer_form').submit(function (e) {
+    let race = {
+        "team": $("#team_id").val(),
+        "username": $("#username_id").val(),
+        "meet": $("#meet_id").val(),
+        "event": $("#event_id").val(),
+        "heat": $("#heat_id").val(),
+        "lanes1": $("#lanes1").val(),
+        "lanes2": $("#lanes2").val(),
+        "lanes3": $("#lanes3").val(),
+        "final1": $("#timerNumber1").text(),
+        "final2": $("#timerNumber2").text(),
+        "final3": $("#timerNumber3").text(),
+        "split1": $("#splitNumber1").text(),
+        "split2": $("#splitNumber2").text(),
+        "split3": $("#splitNumber3").text(),
+    };
+
+    $("#timer_form").submit(function(e) {
         $.ajax({
-            type: 'POST',
-            url: '/time',
-            
+            type: "POST",
+            url: "/time",
+
             data: race,
             success: function(response) {
                 console.log(response);
@@ -202,15 +203,14 @@ timing.prototype.saveTimes = function() {
                 console.log("error");
             }
         });
-        e.preventDefault(); 
-        return true
+        e.preventDefault();
+        return true;
     });
-    
-    $('#saveNotice').removeClass('save')
-    console.log(race)
-    return true
-};
 
+    $("#saveNotice").removeClass("save");
+    console.log(race);
+    return true;
+};
 
 function getLane(laneNum) {
     laneNum = String(laneNum);
@@ -218,21 +218,21 @@ function getLane(laneNum) {
         "id": $("#lanes" + laneNum).val(),
         "final": $("#timerNumber" + laneNum).text(),
         "split": $("#splitNumber" + laneNum).text(),
-        }
-        
+    };
+
     return lane;
 }
 
 function getLanesList() {
-    let lanes = []
-    for(let i = 0; i < 3; i++) {
-        lanes.push(getLane(i + 1))
+    let lanes = [];
+    for (let i = 0; i < 3; i++) {
+        lanes.push(getLane(i + 1));
     }
     return lanes;
 }
 
 // Modal for mobile 
 function loadModal() {
-    $('#rotateScreenModal').modal('show');
+    $("#rotateScreenModal").modal("show");
 
 }
