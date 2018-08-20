@@ -230,9 +230,3 @@ function getLanesList() {
     }
     return lanes;
 }
-
-// Modal for mobile 
-function loadModal() {
-    $("#rotateScreenModal").modal("show");
-
-}

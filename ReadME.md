@@ -52,15 +52,15 @@ All testing for this project was done manually. The Ajax function and Save Times
 
 Times saving individually with one document per lane. 
 
-![MongoDB Initial Data Display](ReadMe images/Saving_Individually_MongoDB.png "Times Saving Initially to MongoDB.")
+![MongoDB Initial Data Display](ReadMe/Saving_Individually_MongoDB.png "Times Saving Initially to MongoDB.")
 
 Times for lanes displaying in the same document. (note: for testing purposes, only two lanes were saved here to make sure that two would show up in the same document.)
 
-![Displaying Together in MongoDB](ReadMe images/Saving_Together_MongoDB.png "All Times Saving Together.")
+![Displaying Together in MongoDB](./ReadMe/Saving_Together_MongoDB.png "All Times Saving Together.")
 
 Correct Data Structure 
 
-![Correct Data Structure in MongoDB](ReadMe images/Saving_Correctly_MongoDB.png "Correct Data Structure.")
+![Correct Data Structure in MongoDB](ReadMe/Saving_Correctly_MongoDB.png "Correct Data Structure.")
 
 Testing for the stopwatches was done manually as well to make sure that the main reset button reset the stopwatch and cleared the splits from all timers, while each individual stopwatch only cleared its own time and splits. Furthermore, this was also tested for the start/stop function, as the main stopwatch controls all stopwatches, while the individual ones should only control their own start/stop functions. 
 

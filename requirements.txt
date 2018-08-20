@@ -1,8 +1,11 @@
 Flask==1.0.2
+Flask-WTF==0.14.2
 Jinja2==2.10
 MarkupSafe==1.0
+WTForms==2.2.1
 Werkzeug==0.14.1
 click==6.7
 gunicorn==19.9.0
 itsdangerous==0.24
+pycodestyle==2.4.0
 pymongo==3.7.0

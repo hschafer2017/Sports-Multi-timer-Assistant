@@ -39,7 +39,6 @@ h5 {
 .timer {
     text-align: center;
     vertical-align: middle;
-    /*font-size: 72px;*/
     color: #00B5B1;
 }
 
@@ -52,7 +51,7 @@ h5 {
 }
 
 .times {
-    font-size: 58px;
+    font-size: 54px;
     font-weight: 600;
     background: -webkit-linear-gradient(#00AAE4, #00BF76);
     -webkit-background-clip: text;
