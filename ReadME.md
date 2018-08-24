@@ -7,7 +7,7 @@ This project was built using the Flask Microframework, and it could be used as a
 
 ![Responsive Demo](https://raw.githubusercontent.com/hschafer2017/Sports-Multi-timer-Assistant/master/TimingDesign.gif "Responsive Demo")
 
-# Live Demo 
+# Live Demo
 
 A live demo of this project can be found [here](https://timing-assistant.herokuapp.com/). This app is hosted on Heroku. 
 
@@ -83,6 +83,8 @@ Save Button to pass values to Flask and into MongoDB were added using Ajax.
 
 The Ajax function was modeled after this [post](https://stackoverflow.com/questions/37631388/how-to-get-data-in-flask-from-ajax-post) from Stack Overflow and modified to fit this project by looking at patterns of other Ajax uses and syntax. A prevent default was added to prevent the page from reloading when the AJAX call is made. 
 
+Recursion in Jinja was used to iterate over the nested dictionaries in Python to render the times and meet data properly. This [method](https://stackoverflow.com/questions/21006574/flask-jinja2-iterating-over-nested-dictionaries/21006895) from Stack Overflow was followed as a guideline, and modified for the nature of my data structure. 
+
 # Refactoring
 
 The javascript function for the stopwatches was attempted to be refactored so that the user could decide how many stopwatches they wanted displayed on the screen based on the number of lanes chosen. 
@@ -109,7 +111,7 @@ var stopwatches = [];
     }
  ```   
 
-When trying to write these in a for loop like this, the stopwatches[i].start() would not read i as a variable that could change, however, when it was hard coded, there was no issue: 
+When trying to write these in a for loop like this, the stopwatches[i].start() would not read ```i``` as a variable that could change, however, when it was hard coded, there was no issue: 
     
 ```javascript
     document.getElementById("reset" + i).onclick = function() {
