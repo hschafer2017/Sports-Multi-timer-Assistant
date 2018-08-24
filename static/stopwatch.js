@@ -1,11 +1,9 @@
-let numLanes = 3;
-
 function stopwatch_setup() {
     // Main Stopwatch: 
     let stopwatch_main =
         new timing("timerMain", "moveAllBtn");
     document.getElementById("moveAllBtn").onclick = function() {
-
+    // Provides ability for the main stopwatch to control all smaller stopwatches
         if (document.getElementById("moveAllBtn").value == "START") {
             stopwatch_main.status = 0;
             stopwatches_one.status = 0;
@@ -25,6 +23,7 @@ function stopwatch_setup() {
         stopwatches_three.start();
 
     };
+    // Allows main stopwatch to reset all stopwatches
     document.getElementById("resetAllBtn").onclick = function() {
         stopwatch_main.reset();
         stopwatches_one.reset();
@@ -32,13 +31,13 @@ function stopwatch_setup() {
         stopwatches_three.reset();
     };
 
-    // Save Times Button 
+    // Controls Saves times button to save to database 
     document.getElementById("saveTimes").onclick = function() {
         stopwatches_one.saveTimes();
 
     };
 
-    // Stopwatch One 
+    // Small Stopwatch One 
     let stopwatches_one =
         new timing("timerNumber1", "start1", "splitNumber1");
     document.getElementById("start1").onclick = function() {
@@ -53,7 +52,7 @@ function stopwatch_setup() {
         stopwatches_one.split();
     };
 
-    // Stopwatch Two 
+    // Small Stopwatch Two 
     let stopwatches_two =
         new timing("timerNumber2", "start2", "splitNumber2");
     document.getElementById("start2").onclick = function() {
@@ -66,7 +65,7 @@ function stopwatch_setup() {
         stopwatches_two.split();
     };
 
-    // Stopwatch Three  
+    // Small Stopwatch Three  
     let stopwatches_three =
         new timing("timerNumber3", "start3", "splitNumber3");
     document.getElementById("start3").onclick = function() {
@@ -211,22 +210,3 @@ timing.prototype.saveTimes = function() {
     console.log(race);
     return true;
 };
-
-function getLane(laneNum) {
-    laneNum = String(laneNum);
-    let lane = {
-        "id": $("#lanes" + laneNum).val(),
-        "final": $("#timerNumber" + laneNum).text(),
-        "split": $("#splitNumber" + laneNum).text(),
-    };
-
-    return lane;
-}
-
-function getLanesList() {
-    let lanes = [];
-    for (let i = 0; i < 3; i++) {
-        lanes.push(getLane(i + 1));
-    }
-    return lanes;
-}
