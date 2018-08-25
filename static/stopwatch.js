@@ -1,9 +1,11 @@
 function stopwatch_setup() {
+    
     // Main Stopwatch: 
     let stopwatch_main =
         new timing("timerMain", "moveAllBtn");
-    document.getElementById("moveAllBtn").onclick = function() {
+
     // Provides ability for the main stopwatch to control all smaller stopwatches
+    document.getElementById("moveAllBtn").onclick = function() {
         if (document.getElementById("moveAllBtn").value == "START") {
             stopwatch_main.status = 0;
             stopwatches_one.status = 0;
@@ -44,9 +46,6 @@ function stopwatch_setup() {
         stopwatches_one.start();
 
     };
-    document.getElementById("reset1").onclick = function() {
-        stopwatches_one.reset();
-    };
 
     document.getElementById("split1").onclick = function() {
         stopwatches_one.split();
@@ -58,9 +57,7 @@ function stopwatch_setup() {
     document.getElementById("start2").onclick = function() {
         stopwatches_two.start();
     };
-    document.getElementById("reset2").onclick = function() {
-        stopwatches_two.reset();
-    };
+    
     document.getElementById("split2").onclick = function() {
         stopwatches_two.split();
     };
@@ -71,9 +68,7 @@ function stopwatch_setup() {
     document.getElementById("start3").onclick = function() {
         stopwatches_three.start();
     };
-    document.getElementById("reset3").onclick = function() {
-        stopwatches_three.reset();
-    };
+    
     document.getElementById("split3").onclick = function() {
         stopwatches_three.split();
     };
@@ -89,7 +84,8 @@ function timing(timerNumber, startNumber, splitNumber) {
     this.splitNBR = document.getElementById(splitNumber);
 }
 
-// Split Function
+// Split Function that takes the time at the moment the function is called 
+// and puts that time into a list under the running stopwatch
 timing.prototype.split = function() {
     let textSplit = document.createElement("ol");
     textSplit.append(this.timerNBR.innerHTML = getTime(this.time));
@@ -130,7 +126,7 @@ timing.prototype.count = function() {
     }
 };
 
-// Resets stopwatches individually
+// Resets stopwatches via main button
 timing.prototype.reset = function() {
     this.status = 0;
     this.time = 0;
@@ -167,9 +163,9 @@ function getTime(time) {
 
 stopwatch_setup();
 
-// Ajax for database 
-
-
+// Saves times to MongoDB via Ajax call, passing
+// the data up to Flask, which provides functionality 
+// for saving the data to MongoDB
 timing.prototype.saveTimes = function() {
 
     let race = {
@@ -193,7 +189,6 @@ timing.prototype.saveTimes = function() {
         $.ajax({
             type: "POST",
             url: "/time",
-
             data: race,
             success: function(response) {
                 console.log(response);
@@ -202,11 +197,13 @@ timing.prototype.saveTimes = function() {
                 console.log("error");
             }
         });
+        // Prevents the default reload of the page from the POST 
+        // request in Flask, so that the times won't clear out of
+        // the stopwatches on reload
         e.preventDefault();
         return true;
     });
 
     $("#saveNotice").removeClass("save");
-    console.log(race);
     return true;
 };
