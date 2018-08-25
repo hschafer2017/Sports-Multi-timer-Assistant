@@ -44,7 +44,7 @@
                                 <div class="row">
 
                                     {% if sport == 'Swimming' %}
-                                    <select name="event" class="form-control input-sm">
+                                    <select required name="event" class="form-control input-sm">
                                         <option value="">Event</option>
             <option value="200 Medley Relay">200 Medley Relay</option>
             <option value="200 Freestyle">200 Freestyle</option>
@@ -62,7 +62,7 @@
         </select>
                                     {% endif %}
                                     {% if sport == 'Track' %}
-                                    <select name="event" class="form-control input-sm">
+                                    <select required name="event" class="form-control input-sm">
                                         <option value="">Event</option>
             <option value="55 Meter Dash">55 Meter Dash</option>
             <option value="55 Meter Hurdles">55 Meter Hurdles</option>
@@ -83,7 +83,7 @@
                                 <div class="row">
 
 
-                                    <select name="heat" class="form-control input-sm">
+                                    <select required name="heat" class="form-control input-sm">
                                         <option value="">Heat</option>
             <option value='1'>1</option>
             <option value="2">2</option>
