@@ -10,9 +10,6 @@ html {
     font-family: 'Karla', sans-serif;
 }
 
-.background {
-    
-}
 .title {
     color: white;
     text-align: center
@@ -31,4 +28,9 @@ html {
 
 .btn-sm {
    border-radius: 2px; 
+}
+
+/*MODAL*/
+.rotate {
+    font-size: 18px;
 }

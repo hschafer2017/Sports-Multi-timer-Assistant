@@ -20,9 +20,21 @@ form {
     text-align: center;
 }
 
-h2 {
+.welcome-head {
+    padding-left: 25px;
+    padding-top: 15px;
     text-align: left;
+}
+
+a {
+    font-size: 36px;
     padding-left: 12px;
+    color: white;
+    text-decoration: none;
+}
+a:hover {
+    color: white;
+    text-decoration: none;
 }
 
 h4 {
