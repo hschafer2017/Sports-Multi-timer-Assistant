@@ -163,6 +163,7 @@ function getTime(time) {
 
 stopwatch_setup();
 
+
 // Saves times to MongoDB via Ajax call, passing
 // the data up to Flask, which provides functionality 
 // for saving the data to MongoDB

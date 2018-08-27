@@ -32,6 +32,7 @@ a {
     color: white;
     text-decoration: none;
 }
+
 a:hover {
     color: white;
     text-decoration: none;
@@ -55,7 +56,7 @@ h5 {
 }
 
 #timerMain {
-    font-size: 75px;
+    font-size: 72px;
     font-weight: 700;
     background: -webkit-linear-gradient(#00AAE4, #00BF76);
     -webkit-background-clip: text;
@@ -90,7 +91,7 @@ ol {
 }
 
 #submit {
-    text-align: right;
+    color: #333;
 }
 
 .center {
@@ -122,14 +123,13 @@ ol {
     border-radius: 2px;
     box-shadow: 0px 0px 25px #d3d3d3;
     color: white;
-}
-
-.btn-sm {
-    border-radius: 2px;
+    width: 99px;
+    height: 45px;
 }
 
 .btn-success {
     background: linear-gradient(to top right, #00AAE4, #00BF76);
+    font-size: 20px;
 }
 
 .btn-success:active {
@@ -138,6 +138,7 @@ ol {
 
 .btn-warning {
     background: linear-gradient(to top right, #FF006E, #FF3B0F);
+    font-size: 20px;
 }
 
 .btn-warning:active {
@@ -146,6 +147,7 @@ ol {
 
 .btn-info {
     background: linear-gradient(to top right, #663399, #6A5ACD);
+    font-size: 20px;
 }
 
 .btn-info:active {
@@ -166,6 +168,10 @@ ol {
 
 .btn-danger:active {
     background: linear-gradient(to top right, #56ab2f, #a8e063);
+}
+
+.btn-default {
+    font-size: 20px;
 }
 
 /*--------------------VIEW TIMES--------------------*/
