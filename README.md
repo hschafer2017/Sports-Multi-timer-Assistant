@@ -36,16 +36,20 @@ No theme was used for this design, the modern design was chosen because with a l
 
 Timing Assistant was built using the Flask Microframework in Python with a NoSQL (MongoDB) database on the backend, with HTML, CSS, Javascript, and jQuery on the frontend and for the stopwatch functionality, connected to the backend with AJAX. 
 
-On the home page of the app, the user enters the sport they wish to time for, their team name, their username, and the meet name. This action takes them to the stopwatch page, where they can then choose the event and heat that they would like to time for. 
+On the home page of the app, the user enters the sport they wish to time for, their team name, their username, and the meet name. This action takes them to the stopwatch page, where they can then choose the event and heat that they would like to time for. The user can time up to three lanes and take splits for all three lanes. The user will have to stop the main timer manually after all three small timers are stopped, as they are set individually. This could be particularly useful, however, if the coach wanted to know how long the race went for and compare their swimmers times versus the final finisher's time. The main timer's time will not save to the database. 
 
 Once they click "submit," the event and heat will appear. They can then start timing for up to three lanes by pressing 'START' on the main stopwatch. This will start all four stopwatches, however, only the bottom three will be saved in the database. There is the option to collect split times for each lane individually with the 'SPLIT' button. Each timer can be stopped and started individually, with the main timer controlling all stopwatches (start, stop, and reset). 
 
 By clicking 'SAVE TIMES,' the times will be saved by using the AJAX call in the Javascript file to push the times up to Flask, with Flask connected to MongoDB. Once the times have been saved, by clicking 'VIEW TIMES,' the times will appear below the stopwatches. 
 
+The data will also save without an event or a heat specified (these fields will be blank when times are viewed). This could be useful if a coach wanted to use the stopwatches in practice and not in a meet setting.
+
 ## Features Left to Implement 
 I would like to be able to give the coaches an opportunity to download the data in a PDF or other file format. In the long run, it would allow them to keep all manual timing for their records without having to rely on handwritten data or relying on this site every time they want to go back and look at old meets. 
 
 I would also like to allow the coach to select the number of stopwatches they want to view based on the number of athletes in each heat. Currently, you can only time for 3 athletes at a time, and you can't choose to time for less than 3. 
+
+I would also like to implement a 'practice mode' and a 'meet mode' that would allow more sophisticated timing for meets and practices. Meet mode would create more restrictions on choosing an event or a heat, and would allow the coach to choose how many lanes they'd like to time for. Practice mode would allow the coach to make notes on times they're saving (for a specific drill, etc), while not having to specify an event or a heat.  
 
 # Testing 
 All testing for this project was done manually. The Ajax function and Save Times button were tested via the console and verifying that the data had appeared correctly formatted in MongoDB. The data collected from the timers and the indended data structure were also tested. 
@@ -73,9 +77,24 @@ During the testing process, I realized that it would be possible for two users t
 {% if time.meet == meets %}
 ```
 
+The splits for each lane were originally showing up in the following format:
+```
+split: ["00:02.2300:01.45"]
+```
+However, I wanted them to appear in a list like so: 
+```
+split: ["00:02.23", "00:01.45"]
+```
+So I had to implement a list comprehension to seperate this string into multiple strings in a list (if more than one split was taken for a lane) every 9 characters.
+
+# Known Issues
+In the HTML timer_page.html, the form that's sending data for the AJAX function looks like it has a stray end tag, but, the needed to encompass all of the final times, split, and lane data in order to save the times to MongoDB. Due to styling and other elements needing to be displayed, it does look like the form is out of order with the other elements. Also, looking at the HTML there are empty tags, however, this is where the split times are inserted into the HTML using jQuery. 
+
+When saving the times, if you choose the same lane for each timer (lane 1, for example), only one of the lane 1 times will show up in view times. But, you have to choose a lane, as you cannot view the times you've saved without it due to the nature of the data structure. The lane drop-down is set to save at lane 1, land 2, and land 3 by default in case the user doesn't specify a lane. I am hoping to implement a validation that will prohibit the times from saving if the user chooses the same lane number for two lanes in a heat. 
+
 # Credits
 
-The Javascript function running the stopwatch is modified from Coding with Sara's stopwatch [tutorial](https://codingwithsara.com/the-multiple-stopwatches-on-one-page-in-javascript-for-intermediates/) for this application. Some HTML was also modeled after her example, but modified to fit styling, multiple buttons, splits, and lanes. 
+The Javascript functions running the stopwatch are modified from Coding with Sara's stopwatch [tutorial](https://codingwithsara.com/the-multiple-stopwatches-on-one-page-in-javascript-for-intermediates/) for this application. Some HTML was also modeled after her example, but modified to fit styling, multiple buttons, splits, and lanes. 
 
 Reset functions were modified for the reset button to reset all stopwatches instead of refreshing the page, and individual reset buttons for each small stopwatch were removed as it was an unnessary feature for the UX of this project. 
 

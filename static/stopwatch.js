@@ -85,7 +85,7 @@ function timing(timerNumber, startNumber, splitNumber) {
 }
 
 // Split Function that takes the time at the moment the function is called 
-// and puts that time into a list under the running stopwatch
+// and puts time into a list under the running stopwatch
 timing.prototype.split = function() {
     let textSplit = document.createElement("ol");
     textSplit.append(this.timerNBR.innerHTML = getTime(this.time));

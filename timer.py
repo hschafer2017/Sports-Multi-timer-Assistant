@@ -73,7 +73,9 @@ def save_times():
     split_two = request.form['split2']
     split_three = request.form['split3']
 
-    # Data structure
+    # Data structure with meet data, new document for each heat
+    # Team, username, and meet used as identifiers when deciding which data
+    # to retrieve from database in view_times
     meet_data = {
         'team': team,
         'username': username,
@@ -112,7 +114,7 @@ def save_times():
 def view_times_on_page(sport, team, username, meet):
     """View saved times underneath stopwatches"""
 
-    # Get from hidden fields
+    # From hidden fields
     meet = request.form['meet']
     event_name = request.form['event']
     heat_num = request.form['heat']
