@@ -5,11 +5,11 @@ This project was built using the Flask Microframework, and it could be used as a
 
 **THIS APPLICATION IS FOR EDUCATIONAL USE ONLY. THIS APPLICATION IS NOT FOR COMMERCIAL USE.**
 
-![Responsive Demo](https://raw.githubusercontent.com/hschafer2017/Sports-Multi-timer-Assistant/master/README_Resources/TimingDesign.gif "Responsive Demo")
+![Responsive Demo](https://raw.githubusercontent.com/hschafer2017/Sports-Multi-timer-Assistant/master/readme_resources/TimingDesign.gif "Responsive Demo")
 
 # Live Demo
 
-A live demo of this project can be found [here](https://timing-assistant.herokuapp.com/). This app is hosted on Heroku. 
+A live demo of this project can be found [here](https://timing-assistant.herokuapp.com/). This app is hosted on Heroku. The times are stored in MongoDB. 
 
 # Technologies
 
@@ -56,15 +56,15 @@ All testing for this project was done manually. The Ajax function and Save Times
 
 Times saving individually with one document per lane. 
 
-![MongoDB Initial Data Display](README_Resources/Saving_Individually_MongoDB.png "Times Saving Initially to MongoDB.")
+![MongoDB Initial Data Display](readme_resources/Saving_Individually_MongoDB.png "Times Saving Initially to MongoDB.")
 
 Times for lanes displaying in the same document. (note: for testing purposes, only two lanes were saved here to make sure that two would show up in the same document.)
 
-![Displaying Together in MongoDB](./README_Resources/Saving_Together_MongoDB.png "All Times Saving Together.")
+![Displaying Together in MongoDB](./readme_resources/Saving_Together_MongoDB.png "All Times Saving Together.")
 
 Correct Data Structure 
 
-![Correct Data Structure in MongoDB](README_Resources/Saving_Correctly_MongoDB.png "Correct Data Structure.")
+![Correct Data Structure in MongoDB](readme_resources/Saving_Correctly_MongoDB.png "Correct Data Structure.")
 
 Testing for the stopwatches was done manually as well to make sure that the main reset button reset the stopwatch and cleared the splits from all timers, while each individual stopwatch only cleared its own time and splits. Furthermore, this was also tested for the start/stop function, as the main stopwatch controls all stopwatches, while the individual ones should only control their own start/stop functions. 
 
@@ -92,17 +92,16 @@ In the HTML timer_page.html, the form that's sending data for the AJAX function 
 
 When saving the times, if you choose the same lane for each timer (lane 1, for example), only one of the lane 1 times will show up in view times. But, you have to choose a lane, as you cannot view the times you've saved without it due to the nature of the data structure. The lane drop-down is set to save at lane 1, land 2, and land 3 by default in case the user doesn't specify a lane. I am hoping to implement a validation that will prohibit the times from saving if the user chooses the same lane number for two lanes in a heat. 
 
+
 # Credits
 
 The Javascript functions running the stopwatch are modified from Coding with Sara's stopwatch [tutorial](https://codingwithsara.com/the-multiple-stopwatches-on-one-page-in-javascript-for-intermediates/) for this application. Some HTML was also modeled after her example, but modified to fit styling, multiple buttons, splits, and lanes. 
 
-Reset functions were modified for the reset button to reset all stopwatches instead of refreshing the page, and individual reset buttons for each small stopwatch were removed as it was an unnessary feature for the UX of this project. 
-
-Split functions were also added. Start/Stop functions were modified for a style change in buttons using jQuery. Save Button to pass values to Flask and into MongoDB were added using Ajax. 
+For the JavaScript, reset functions were modified for the reset button to reset all stopwatches instead of refreshing the page, and individual reset buttons for each small stopwatch were removed as it was an unnessary feature for the UX of this project. Split functions were also added. Start/Stop functions were modified for a style change in buttons using jQuery. A main stopwatch was added for UX and so the coach could see the total time elapsed along with individual times, similar to a swimming scoreboard. Save Button to pass values to Flask and into MongoDB were added using Ajax. 
 
 The Ajax function was modeled after this [post](https://stackoverflow.com/questions/37631388/how-to-get-data-in-flask-from-ajax-post) from Stack Overflow and modified to fit this project by looking at patterns of other Ajax uses and syntax. A prevent default was added to prevent the page from reloading when the AJAX call is made. 
 
-Recursion in Jinja was used to iterate over the nested dictionaries in Python to render the times and meet data properly. This [method](https://stackoverflow.com/questions/21006574/flask-jinja2-iterating-over-nested-dictionaries/21006895) from Stack Overflow was followed as a guideline, and modified for the nature of my data structure. 
+Recursion in Jinja was used to iterate over the nested dictionaries in Python to render the times and meet data properly by ensuring that all lanes were looped through and displayed. This [method](https://stackoverflow.com/questions/21006574/flask-jinja2-iterating-over-nested-dictionaries/21006895) from Stack Overflow was followed as a guideline, and modified for the nature of my data structure. 
 
 # Refactoring
 
@@ -166,4 +165,4 @@ If you're interested in cloning this repository, to set up and install everythin
 $ sudo pip3 -r install requirements.txt
 ```
 
-Please note that I used Cloud9 for this project, so if you are using a different editor, the terminal commands may differ. Please consult the docs for the editor you're using for further information on editor-specific terminal commands. All secret keys for MongoDB will need to be obtained individually, as they are hidden. 
+Please note that I used Cloud9 for this project, so if you are using a different editor, the terminal commands may differ. Please consult the docs for the editor you're using for further information on editor-specific terminal commands. All secret keys for MongoDB will need to be obtained individually, as they are hidden and specific to me. 
