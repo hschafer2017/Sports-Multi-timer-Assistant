@@ -1,7 +1,7 @@
 # Timing Assistant
 
 Stream Three Project: Data Centric Development - Code Institute.  
-This project was built using the Flask Microframework, and it could be used as a manual stopwatch to time multiple athletes in swimming and track. The goal of this application is to improve efficency in sports timing by decreasing the number of people timing seperately and directly storing the times, as opposed to keeping a written documentation.  
+This project was built using the Flask Microframework, and it could be used as a manual stopwatch to time multiple athletes in swimming and track. The goal of this application is to improve efficiency in sports timing by decreasing the number of people timing separately and directly storing the times, as opposed to keeping a written documentation.  
 
 **THIS APPLICATION IS FOR EDUCATIONAL USE ONLY. THIS APPLICATION IS NOT FOR COMMERCIAL USE.**
 
@@ -28,7 +28,7 @@ The idea for this Timing Assistant app came from my exposure to swimming through
 
 I saw this opportunity to create an application that would cut down on the number of people involved in the timing process, hoping to improve the efficiency of the meets and feedback to the athletes and coaches. This application could be optimised for any timed sport, and this version works with both swimming and track.
 
-Coaches and timers alike can choose a sport, meet, event, heat, and lane numbers which all help them keep track of what's going on in a meet. It also allows them to give their atheletes instant feedback after a race, since the times show up after you've saved them and then hit 'view times.' I also wanted to make sure they were able to see cumulative results for the meet, instead of just one event at a time. 
+Coaches and timers alike can choose a sport, meet, event, heat, and lane numbers which all help them keep track of what's going on in a meet. It also allows them to give their athletes instant feedback after a race, since the times show up after you've saved them and then hit 'view times.' I also wanted to make sure they were able to see cumulative results for the meet, instead of just one event at a time. 
 
 No theme was used for this design, the modern design was chosen because with a lot of timers and data on a page, it can appear messy and unorganized. I didn't want this, so while I wanted the timers, times, and event options on one page, I thought splitting the page into thirds vertically would be the best way to do this, creating a noticable difference between each third. 
 
@@ -52,7 +52,7 @@ I would also like to allow the coach to select the number of stopwatches they wa
 I would also like to implement a 'practice mode' and a 'meet mode' that would allow more sophisticated timing for meets and practices. Meet mode would create more restrictions on choosing an event or a heat, and would allow the coach to choose how many lanes they'd like to time for. Practice mode would allow the coach to make notes on times they're saving (for a specific drill, etc), while not having to specify an event or a heat.  
 
 # Testing 
-All testing for this project was done manually. The Ajax function and Save Times button were tested via the console and verifying that the data had appeared correctly formatted in MongoDB. The data collected from the timers and the indended data structure were also tested. 
+All testing for this project was done manually. The Ajax function and Save Times button were tested via the console and verifying that the data had appeared correctly formatted in MongoDB. The data collected from the timers and the intended data structure were also tested. 
 
 Times saving individually with one document per lane. 
 
@@ -85,7 +85,7 @@ However, I wanted them to appear in a list like so:
 ```
 split: ["00:02.23", "00:01.45"]
 ```
-So I had to implement a list comprehension to seperate this string into multiple strings in a list (if more than one split was taken for a lane) every 9 characters.
+So I had to implement a list comprehension to separate this string into multiple strings in a list (if more than one split was taken for a lane) every 9 characters.
 
 # Known Issues
 In the HTML timer_page.html, the form that's sending data for the AJAX function looks like it has a stray end tag, but, the needed to encompass all of the final times, split, and lane data in order to save the times to MongoDB. Due to styling and other elements needing to be displayed, it does look like the form is out of order with the other elements. Also, looking at the HTML there are empty tags, however, this is where the split times are inserted into the HTML using jQuery. 
@@ -97,9 +97,9 @@ When saving the times, if you choose the same lane for each timer (lane 1, for e
 
 The Javascript functions running the stopwatch are modified from Coding with Sara's stopwatch [tutorial](https://codingwithsara.com/the-multiple-stopwatches-on-one-page-in-javascript-for-intermediates/) for this application. Some HTML was also modeled after her example, but modified to fit styling, multiple buttons, splits, and lanes. 
 
-For the JavaScript, reset functions were modified for the reset button to reset all stopwatches instead of refreshing the page, and individual reset buttons for each small stopwatch were removed as it was an unnessary feature for the UX of this project. Split functions were also added. Start/Stop functions were modified for a style change in buttons using jQuery. A main stopwatch was added for UX and so the coach could see the total time elapsed along with individual times, similar to a swimming scoreboard. Save Button to pass values to Flask and into MongoDB were added using Ajax. 
+For the JavaScript, reset functions were modified for the reset button to reset all stopwatches instead of refreshing the page, and individual reset buttons for each small stopwatch were removed as it was an unnecessary feature for the UX of this project. Split functions were also added. Start/Stop functions were modified for a style change in buttons using jQuery. A main stopwatch was added for UX and so the coach could see the total time elapsed along with individual times, similar to a swimming scoreboard. Save Button to pass values to Flask and into MongoDB were added using Ajax. 
 
-The Ajax function was modeled after this [post](https://stackoverflow.com/questions/37631388/how-to-get-data-in-flask-from-ajax-post) from Stack Overflow and modified to fit this project by looking at patterns of other Ajax uses and syntax. A prevent default was added to prevent the page from reloading when the AJAX call is made. 
+The Ajax function was modeled after this [post](https://stackoverflow.com/questions/37631388/how-to-get-data-in-flask-from-ajax-post) from Stack Overflow and modified to fit this project by looking at patterns of other Ajax uses and syntax. A preventDefault was added to prevent the page from reloading when the AJAX call is made. 
 
 Recursion in Jinja was used to iterate over the nested dictionaries in Python to render the times and meet data properly by ensuring that all lanes were looped through and displayed. This [method](https://stackoverflow.com/questions/21006574/flask-jinja2-iterating-over-nested-dictionaries/21006895) from Stack Overflow was followed as a guideline, and modified for the nature of my data structure. 
 
@@ -143,7 +143,7 @@ When trying to write these in a for loop like this, the stopwatches[i].start() w
 
 I tried to approach it a different way, which involved if statements to get the corresponding stopwatches to appear. 
 
-Attempted to pass the ```i``` through a function instead as an arguement taken from the for loop above, but was unsuccessful: 
+Attempted to pass the ```i``` through a function instead as an argument taken from the for loop above, but was unsuccessful: 
 
 ```javascript
 function chooseNumberOfStopwatches(i) {
