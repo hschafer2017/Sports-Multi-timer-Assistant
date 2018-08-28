@@ -1,6 +1,7 @@
 # Timing Assistant
 
 Stream Three Project: Data Centric Development - Code Institute.  
+
 This project was built using the Flask Microframework, and it could be used as a manual stopwatch to time multiple athletes in swimming and track. The goal of this application is to improve efficiency in sports timing by decreasing the number of people timing separately and directly storing the times, as opposed to keeping a written documentation.  
 
 **THIS APPLICATION IS FOR EDUCATIONAL USE ONLY. THIS APPLICATION IS NOT FOR COMMERCIAL USE.**
@@ -18,7 +19,7 @@ A live demo of this project can be found [here](https://timing-assistant.herokua
 3. jQuery
 4. AJAX 
 5. MongoDB (NoSQL Database)
-6. Bootstrap
+6. Bootstrap (3.3.7)
 7. HTML
 8. CSS 
 
@@ -52,17 +53,19 @@ I would also like to allow the coach to select the number of stopwatches they wa
 I would also like to implement a 'practice mode' and a 'meet mode' that would allow more sophisticated timing for meets and practices. Meet mode would create more restrictions on choosing an event or a heat, and would allow the coach to choose how many lanes they'd like to time for. Practice mode would allow the coach to make notes on times they're saving (for a specific drill, etc), while not having to specify an event or a heat.  
 
 # Testing 
-All testing for this project was done manually. The Ajax function and Save Times button were tested via the console and verifying that the data had appeared correctly formatted in MongoDB. The data collected from the timers and the intended data structure were also tested. 
+All testing for this project was done manually. The form on the landing page has required attributes on the input tags to prevent the user from not filling out a field in the form, as this will result in a 400 error, since the Flask app route depends on these inputs. 
 
-Times saving individually with one document per lane. 
+The Ajax function and Save Times button were tested via the console and verifying that the data had appeared correctly formatted in MongoDB. The data collected from the timers and the intended data structure were also tested. 
+
+Times saving individually with one document per lane: 
 
 ![MongoDB Initial Data Display](readme_resources/Saving_Individually_MongoDB.png "Times Saving Initially to MongoDB.")
 
-Times for lanes displaying in the same document. (note: for testing purposes, only two lanes were saved here to make sure that two would show up in the same document.)
+Times for lanes displaying in the same document (note: for testing purposes, only two lanes were saved here to make sure that two would show up in the same document.):
 
 ![Displaying Together in MongoDB](./readme_resources/Saving_Together_MongoDB.png "All Times Saving Together.")
 
-Correct Data Structure 
+Correct Data Structure:
 
 ![Correct Data Structure in MongoDB](readme_resources/Saving_Correctly_MongoDB.png "Correct Data Structure.")
 

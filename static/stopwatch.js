@@ -1,5 +1,5 @@
 function stopwatch_setup() {
-    
+
     // Main Stopwatch: 
     let stopwatch_main =
         new timing("timerMain", "moveAllBtn");
@@ -57,7 +57,7 @@ function stopwatch_setup() {
     document.getElementById("start2").onclick = function() {
         stopwatches_two.start();
     };
-    
+
     document.getElementById("split2").onclick = function() {
         stopwatches_two.split();
     };
@@ -68,7 +68,7 @@ function stopwatch_setup() {
     document.getElementById("start3").onclick = function() {
         stopwatches_three.start();
     };
-    
+
     document.getElementById("split3").onclick = function() {
         stopwatches_three.split();
     };
